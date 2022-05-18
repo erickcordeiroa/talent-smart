@@ -2,23 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+//Routes Web
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//Routes Candidade
+Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
+    Route::get('/', function(){
+        return view('candidate.index');
+    })->name('app.dash');
+});
 
-require __DIR__.'/auth.php';
+
+//Routes Company
+Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
+    Route::get('/', function(){
+        return view('company.index');
+    })->name('company.dash');
+});
