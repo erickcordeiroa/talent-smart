@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //Routes Web
 Route::get('/', function () {
-    return view('welcome');
+    return view('web.index');
 });
 
 //Routes Candidade
