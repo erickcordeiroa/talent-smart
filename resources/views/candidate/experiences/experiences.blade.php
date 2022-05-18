@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="experiencies-container bg-white rounded-lg p-6 ">
-        <div class="header-vacancy-item h-12 flex w-full justify-between items-center border-b border-gray-200">
+    <div class="experiencies-container bg-white rounded-lg px-6 py-3 ">
+        <div class="header-vacancy-item h-12 flex w-full justify-between items-center border-b border-gray-200 pb-2">
             <div>
                 <h2 class="font-bold text-xl">Experiências</h2>
             </div>

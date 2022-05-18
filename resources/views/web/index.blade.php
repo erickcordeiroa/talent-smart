@@ -27,7 +27,7 @@
                 <div class="space-x-6">
                     <!-- Logo -->
                     <a href="/">
-                        <img src="{{ asset('img/logo.png') }}" alt="Talent Smart" class="w-60">
+                        <img src="{{ asset('img/logo.png') }}" alt="Talent Smart" class="w-80">
                     </a>
                 </div>
 
@@ -40,13 +40,24 @@
                     </ul>
                 </div>
                 <div class="space-x-6">
-                    <ul class="flex items-center ">
-                        <li><a href="{{ route('login') }}">Entrar</a></li>
-                        <li><a href="{{ route('register') }}"
-                                class="ml-4 px-6 py-2 rounded-full bg-blue-800 text-white 
-                                font-bold hover:bg-blue-900 transition ease-in duration-150">Cadastre-se</a>
-                        </li>
-                    </ul>
+                    @auth
+                        <ul class="flex items-center ">
+                            <li><a href="{{ route('app.dash') }}"
+                                    class="ml-4 px-6 py-2 rounded-full bg-blue-800 text-white 
+                            font-bold hover:bg-blue-900 transition ease-in duration-150">Acessar
+                                    Painel</a>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="flex items-center ">
+                            <li><a href="{{ route('login') }}">Entrar</a></li>
+                            <li><a href="{{ route('register') }}"
+                                    class="ml-4 px-6 py-2 rounded-full bg-blue-800 text-white 
+                                        font-bold hover:bg-blue-900 transition ease-in duration-150">Cadastre-se</a>
+                            </li>
+                        </ul>
+                    @endauth
+
                 </div>
 
                 <!-- Hamburger -->
@@ -80,15 +91,18 @@
         </div>
     </nav>
 
-    <div class="max-w-7xl mx-auto py-32">
+    <div class="max-w-7xl mx-auto py-24">
         <div class="flex justify-between items-center space-x-4">
             <div class="information w-1/2 space-y-6">
                 <h6 class="font-bold uppercase text-sm text-blue-900">Boas-vindas a TalentSmart</h6>
                 <h1 class="text-6xl font-semibold">Encontre excelentes lugares para trabalhar</h1>
-                <p class="text-lg text-gray-500">Encontre suas vagas de emprego no Infojobs, são milhares de empregos nas maiores empresas do país.</p>
+                <p class="text-lg text-gray-500">Encontre suas vagas de emprego no Talent Smart, são milhares de empregos
+                    nas maiores empresas do país.</p>
                 <div class="flex justify-between items-center max-w-md">
-                    <button class="bg-blue-800 text-white px-5 py-3 rounded-full font-bold">Comece agora mesmo</button>
-                    <button class="border-2 border-blue-800 text-blue-800 px-5 py-3 rounded-full font-bold">Conheça nosso trabalho</button>
+                    <a href="{{ route('register') }}"
+                        class="bg-blue-800 text-white px-5 py-3 rounded-full font-bold">Comece agora mesmo</a>
+                    <button class="border-2 border-blue-800 text-blue-800 px-5 py-3 rounded-full font-bold">Conheça
+                        nosso trabalho</button>
                 </div>
             </div>
             <div class="image w-1/2">

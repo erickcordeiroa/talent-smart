@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="educations-container bg-white rounded-lg p-6 ">
-        <div class="header-vacancy-item h-12 flex w-full justify-between items-center border-b border-gray-200">
+    <div class="educations-container bg-white rounded-lg px-6 py-3 ">
+        <div class="header-vacancy-item h-12 flex w-full justify-between items-center border-b border-gray-200 pb-2">
             <div>
                 <h2 class="font-bold text-xl">Cursos</h2>
             </div>
@@ -47,7 +47,7 @@
             {{-- Date --}}
             <h3 class="text-gray-400">nov. de 2011 - jan. de 2022</h3>
             {{-- Location --}}
-            <h3 class="text-gray-400">Online</h3>
+            <h3 class="text-gray-400">Curso Online</h3>
             {{-- Description --}}
             <p class="my-4 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam dignissimos
                 officiis
