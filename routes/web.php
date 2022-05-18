@@ -13,6 +13,14 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/', function(){
         return view('candidate.index');
     })->name('app.dash');
+
+    Route::get('/experiencias', function(){
+        return view('candidate.experiences.experiences');
+    })->name('app.experiences');
+
+    Route::get('/cursos', function(){
+        return view('candidate.educations.educations');
+    })->name('app.educations');
 });
 
 
@@ -22,3 +30,5 @@ Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
         return view('company.index');
     })->name('company.dash');
 });
+
+require __DIR__.'/auth.php';
