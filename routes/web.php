@@ -14,6 +14,10 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
         return view('candidate.index');
     })->name('app.dash');
 
+    Route::get('/vaga/id', function(){
+        return view('candidate.job');
+    })->name('app.jobitem');
+
     Route::get('/experiencias', function(){
         return view('candidate.experiences.experiences');
     })->name('app.experiences');
@@ -25,6 +29,7 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/perfil', function(){
         return view('candidate.profile.perfil');
     })->name('app.perfil');
+
     Route::get('/minhas-vagas', function(){
         return view('candidate.jobs.list');
     })->name('app.jobs');

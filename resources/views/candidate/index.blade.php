@@ -66,7 +66,7 @@
                             <span class="font-bold block">Salário</span>
                             <span class="text-md text-orange-500">À Combinar</span>
                         </div>
-                        <a href="#"
+                        <a href="{{ route('app.jobitem') }}"
                             class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                             Ver informações da vaga
                         </a>
@@ -118,7 +118,7 @@
                             <span class="font-bold block">Salário</span>
                             <span class="text-md text-orange-500">À Combinar</span>
                         </div>
-                        <a href="#"
+                        <a href="{{ route('app.jobitem') }}"
                             class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                             Ver informações da vaga
                         </a>
@@ -170,7 +170,7 @@
                             <span class="font-bold block">Salário</span>
                             <span class="text-md text-orange-500">À Combinar</span>
                         </div>
-                        <a href="#"
+                        <a href="{{ route('app.jobitem') }}"
                             class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                             Ver informações da vaga
                         </a>
