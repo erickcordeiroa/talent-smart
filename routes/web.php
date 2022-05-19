@@ -21,6 +21,13 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/cursos', function(){
         return view('candidate.educations.educations');
     })->name('app.educations');
+
+    Route::get('/perfil', function(){
+        return view('candidate.profile.perfil');
+    })->name('app.perfil');
+    Route::get('/minhas-vagas', function(){
+        return view('candidate.jobs.list');
+    })->name('app.jobs');
 });
 
 
