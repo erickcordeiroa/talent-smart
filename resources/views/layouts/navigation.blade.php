@@ -30,7 +30,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link href="">
+                        <x-dropdown-link href="{{ route('app.perfil')}}">
                             {{ __('Meu Perfil') }}
                         </x-dropdown-link>
 
@@ -66,7 +66,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="">
+            <x-responsive-nav-link href="{{route('app.perfil')}}">
                 {{ __('Meu Perfil') }}
             </x-responsive-nav-link>
         </div>

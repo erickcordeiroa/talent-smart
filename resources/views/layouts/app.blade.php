@@ -49,6 +49,7 @@
                 <!-- LINKS MENU -->
                 <div class="bg-white rounded-md border-gray-300 p-5 mt-4">
                     <ul class="w-full">
+                        <li class="p-3 border-b border-gray-100"><a class="hover:underline" href="{{ route('app.jobs') }}">Minhas Vagas</a></li>
                         <li class="p-3 border-b border-gray-100"><a class="hover:underline" href="{{ route('app.experiences') }}">Minhas
                                 Experiências</a></li>
                         <li class="p-3 border-gray-100"><a class="hover:underline" href="{{ route('app.educations') }}">Meus Cursos</a></li>
