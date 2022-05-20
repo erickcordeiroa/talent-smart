@@ -22,7 +22,7 @@
                             class="w-12 h-12 rounded-full">
                     </div>
                     <div>
-                        <h6>EWD Marketing Digital e Desenvolvimento Web</h6>
+                        <h6 class="font-semibold">EWD Marketing Digital e Desenvolvimento Web</h6>
                     </div>
                 </div>
 
