@@ -25,7 +25,59 @@
 
     <div class="jobs-container space-y-6 my-6">
         <div
-            class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+            class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer border border-blue-500">
+            <div class="flex flex-1 px-2 py-6">
+                <div class="w-full mx-4">
+                    <h4 class="text-xl font-semibold">
+                        <a href="#" class="hover:underline">A random title can go here</a>
+                    </h4>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
+                            <div>10 hours ago</div>
+                            <div>&bull;</div>
+                            <div>Category 1</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex items-center">
+                        <div class="mr-4">
+                            <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
+                                class="w-12 h-12 rounded-full">
+                        </div>
+                        <div>
+                            <h6>EWD Marketing Digital e Desenvolvimento Web</h6>
+                        </div>
+                    </div>
+
+                    <div class="text-gray-600 mt-4 line-clamp-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quo quisquam tempore modi iure
+                        at possimus fugit placeat perferendis, ducimus aperiam eaque excepturi sapiente atque quos!
+                        Nihil optio, natus architecto perspiciatis. Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Corporis iusto quis blanditiis labore nisi possimus consectetur porro,
+                        architecto culpa provident voluptatibus rem nulla commodi nemo, inventore reprehenderit!
+                        Dolor perspiciatis numquam, vitae dolorum quidem ullam voluptatem perferendis quia
+                        exercitationem atque animi dolore! Maxime nobis natus maiores eius quae, iure nesciunt
+                        aperiam.
+                    </div>
+
+                    <div class="flex items-center space-x-2 mt-4 justify-between">
+                        <div>
+                            <span class="font-bold block">Salário</span>
+                            <span class="text-md text-orange-500">À Combinar</span>
+                        </div>
+                        <a href="{{ route('app.jobitem') }}"
+                            class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
+                            Ver informações da vaga
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- job-container -->
+
+        <div
+            class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer border border-blue-500">
             <div class="flex flex-1 px-2 py-6">
                 <div class="w-full mx-4">
                     <h4 class="text-xl font-semibold">
@@ -77,7 +129,7 @@
         </div><!-- job-container -->
 
         <div
-            class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+            class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer border border-blue-500">
             <div class="flex flex-1 px-2 py-6">
                 <div class="w-full mx-4">
                     <h4 class="text-xl font-semibold">
@@ -94,59 +146,7 @@
 
                     <div class="mt-4 flex items-center">
                         <div class="mr-4">
-                            <img src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar"
-                                class="w-12 h-12 rounded-full">
-                        </div>
-                        <div>
-                            <h6>EWD Marketing Digital e Desenvolvimento Web</h6>
-                        </div>
-                    </div>
-
-                    <div class="text-gray-600 mt-4 line-clamp-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quo quisquam tempore modi iure
-                        at possimus fugit placeat perferendis, ducimus aperiam eaque excepturi sapiente atque quos!
-                        Nihil optio, natus architecto perspiciatis. Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Corporis iusto quis blanditiis labore nisi possimus consectetur porro,
-                        architecto culpa provident voluptatibus rem nulla commodi nemo, inventore reprehenderit!
-                        Dolor perspiciatis numquam, vitae dolorum quidem ullam voluptatem perferendis quia
-                        exercitationem atque animi dolore! Maxime nobis natus maiores eius quae, iure nesciunt
-                        aperiam.
-                    </div>
-
-                    <div class="flex items-center space-x-2 mt-4 justify-between">
-                        <div>
-                            <span class="font-bold block">Salário</span>
-                            <span class="text-md text-orange-500">À Combinar</span>
-                        </div>
-                        <a href="{{ route('app.jobitem') }}"
-                            class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
-                            Ver informações da vaga
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div><!-- job-container -->
-
-        <div
-            class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
-            <div class="flex flex-1 px-2 py-6">
-                <div class="w-full mx-4">
-                    <h4 class="text-xl font-semibold">
-                        <a href="#" class="hover:underline">A random title can go here</a>
-                    </h4>
-
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
-                            <div>10 hours ago</div>
-                            <div>&bull;</div>
-                            <div>Category 1</div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 flex items-center">
-                        <div class="mr-4">
-                            <img src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar"
+                            <img src="https://source.unsplash.com/200x200/?face&crop=face&v=4" alt="avatar"
                                 class="w-12 h-12 rounded-full">
                         </div>
                         <div>

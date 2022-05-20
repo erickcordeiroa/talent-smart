@@ -41,7 +41,7 @@
                             <h5 class="text-md font-normal text-orange-500">{{ Auth::user()->profile }}</h5>
                         </div>
                     </div>
-                    <div class="about-user mt-4">
+                    <div class="about-user mt-4 line-clamp-3">
                         <p>{{ Auth::user()->description }}</p>
                     </div>
                 </div>
@@ -64,6 +64,7 @@
             </div>
         </div>
     </div>
-</body>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
 </html>
