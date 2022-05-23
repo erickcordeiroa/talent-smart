@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Candidate\ExperiencesController;
+use App\Http\Controllers\Candidate\EducationsController;
 
 
 //Routes Web
@@ -18,13 +20,9 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
         return view('candidate.job');
     })->name('app.jobitem');
 
-    Route::get('/experiencias', function(){
-        return view('candidate.experiences.experiences');
-    })->name('app.experiences');
+    Route::get('/experiencias', [ExperiencesController::class, 'index'])->name('app.experiences');
 
-    Route::get('/cursos', function(){
-        return view('candidate.educations.educations');
-    })->name('app.educations');
+    Route::get('/cursos', [EducationsController::class, 'index'])->name('app.educations');
 
     Route::get('/perfil', function(){
         return view('candidate.profile.perfil');
