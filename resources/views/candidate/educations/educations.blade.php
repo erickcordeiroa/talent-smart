@@ -15,14 +15,17 @@
                 </a>
             </div>
         </div>
+        @foreach ($educations as $item)
 
         <div class="education-container mt-4 w-full flex flex-col border-b border-gray-200">
+            
+            
             {{-- Informations displayed --}}
 
             {{-- Job Title And Icons Edit/Remove --}}
             <div class="flex justify-center items-center">
                 <div class="w-full">
-                    <h1 class="font-semibold text-3xl">Desenvolvimento Web HTML/CSS</h1>
+                    <h1 class="font-semibold text-3xl">{{$item->title}}</h1>
                 </div>
                 <div class="w-1/12 flex">
                     <a href="#" class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
@@ -43,24 +46,16 @@
             </div>
 
             {{-- Company name --}}
-            <h2 class="font-bold">B7Web</h2>
+            <h2 class="font-bold">{{$item->company}}</h2>
             {{-- Date --}}
-            <h3 class="text-gray-400">nov. de 2011 - jan. de 2022</h3>
-            {{-- Location --}}
-            <h3 class="text-gray-400">Curso Online</h3>
+            <h3 class="text-gray-400">{{$item->start}} - {{$item->end}}</h3>
+            {{-- Degree --}}
+            <h3 class="text-gray-400">{{$item->degree}}</h3>
             {{-- Description --}}
-            <p class="my-4 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam dignissimos
-                officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit.</p>
-            {{-- I need to check this section to make sure it is with properly colours and formating --}}
+            <p class="my-4 line-clamp-3">{{$item->description}}</p>
+        
         </div><!-- end education-Container -->
-
+        @endforeach
         
     </div><!-- end Educations Container -->
 </x-app-layout>

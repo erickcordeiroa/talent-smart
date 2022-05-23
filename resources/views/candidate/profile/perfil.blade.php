@@ -22,6 +22,8 @@
                     <input type="text" name="email" class="w-full rounded-md bg-gray-100 border border-gray-200"
                         placeholder="joaodasilva@hotmail.com">
                 </div>
+
+                
                 {{-- Address --}}
                 <div class="mb-6">
                     <label for="address" class="font-semibold block mb-1">Endereco</label>
@@ -58,8 +60,22 @@
                             class="rounded-md bg-gray-100 border border-gray-200" placeholder="********">
                     </div>
                 </div>
-
-
+                <div>
+                    {{-- Date of Birthday --}}
+                    <div class="mb-6 flex">
+                        <div class="flex flex-col w-1/2 pr-2">
+                            <label for="dob" class="font-semibold mb-1">Data de Aniversario</label>
+                            <input type="date" name="dob"
+                            class="rounded-md bg-gray-100 border border-gray-200">
+                        </div>
+                    {{-- CPF/CNPJ --}}
+                        <div class="flex flex-col w-1/2">
+                            <label for="cpf" class="font-semibold mb-1">CPF</label>
+                            <input type="text" name="cpf"
+                            class="rounded-md bg-gray-100 border border-gray-200" placeholder="XXX.XXX.XXX-XX">
+                        </div>
+                    </div>
+                </div>
                 {{-- Status --}}
                 <div class="mb-6">
                     <label for="status" class="font-semibold mb-1 block">Status</label>
@@ -68,7 +84,6 @@
                         <option value="0">Nao quero receber proposta de emprego</option>
                     </select>
                 </div>
-
                 <div class="mb-6">
                     <label for="description" class="font-semibold mb-1 block">Descricao</label>
                     <textarea name="description" rows="10" class="rounded-md bg-gray-100 border border-gray-200 w-full" style="resize:none;"

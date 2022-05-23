@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="experiencies-container bg-white rounded-lg px-6 py-3 ">
+
         <div class="header-vacancy-item h-12 flex w-full justify-between items-center border-b border-gray-200 pb-2">
             <div>
                 <h2 class="font-bold text-xl">Experiências</h2>
@@ -15,14 +16,14 @@
                 </a>
             </div>
         </div>
-
+        @foreach($experiences as $item)
         <div class="experience-container mt-4 w-full flex flex-col border-b border-gray-200">
             {{-- Informations displayed --}}
 
             {{-- Job Title And Icons Edit/Remove --}}
             <div class="flex justify-center items-center">
                 <div class="w-full">
-                    <h1 class="font-semibold text-3xl">Desenvolvedor Fullstack</h1>
+                    <h1 class="font-semibold text-3xl">{{$item->title}}</h1>
                 </div>
                 <div class="w-1/12 flex">
                     <a href="#" class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
@@ -43,112 +44,16 @@
             </div>
 
             {{-- Company name --}}
-            <h2 class="font-bold">Ewd Marketing Digital e Desenvolvimento Web</h2>
+            <h2 class="font-bold">{{$item->company}}</h2>
             {{-- Date --}}
-            <h3 class="text-gray-400">nov. de 2011 - jan. de 2022</h3>
+            <h3 class="text-gray-400">{{$item->start}} - {{$item->end}}</h3>
             {{-- Location --}}
-            <h3 class="text-gray-400">Registro - SP</h3>
+            <h3 class="text-gray-400">{{$item->city}}</h3>
             {{-- Description --}}
-            <p class="my-4 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam dignissimos
-                officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit.</p>
+            <p class="my-4 line-clamp-3">{{$item->description}}</p>
             {{-- I need to check this section to make sure it is with properly colours and formating --}}
         </div><!-- end Experience-Container -->
-
-        <div class="experience-container mt-4 w-full flex flex-col border-b border-gray-200">
-            {{-- Informations displayed --}}
-
-            {{-- Job Title And Icons Edit/Remove --}}
-            <div class="flex justify-center items-center">
-                <div class="w-full">
-                    <h1 class="font-semibold text-3xl">Desenvolvedor Fullstack</h1>
-                </div>
-                <div class="w-1/12 flex">
-                    <a href="#" class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-red-500 transition duration-150 ease-in">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            {{-- Company name --}}
-            <h2 class="font-bold">Ewd Marketing Digital e Desenvolvimento Web</h2>
-            {{-- Date --}}
-            <h3 class="text-gray-400">nov. de 2011 - jan. de 2022</h3>
-            {{-- Location --}}
-            <h3 class="text-gray-400">Registro - SP</h3>
-            {{-- Description --}}
-            <p class="my-4 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam dignissimos
-                officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit.</p>
-            {{-- I need to check this section to make sure it is with properly colours and formating --}}
-        </div><!-- end Experience-Container -->
-
-        <div class="experience-container mt-4 w-full flex flex-col border-b border-gray-200">
-            {{-- Informations displayed --}}
-
-            {{-- Job Title And Icons Edit/Remove --}}
-            <div class="flex justify-center items-center">
-                <div class="w-full">
-                    <h1 class="font-semibold text-3xl">Desenvolvedor Fullstack</h1>
-                </div>
-                <div class="w-1/12 flex">
-                    <a href="#" class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-red-500 transition duration-150 ease-in">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            {{-- Company name --}}
-            <h2 class="font-bold">Ewd Marketing Digital e Desenvolvimento Web</h2>
-            {{-- Date --}}
-            <h3 class="text-gray-400">nov. de 2011 - jan. de 2022</h3>
-            {{-- Location --}}
-            <h3 class="text-gray-400">Registro - SP</h3>
-            {{-- Description --}}
-            <p class="my-4 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam dignissimos
-                officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis
-                suscipit. Nisi error maxime saepe, sit consequatur provident esse eius optio impedit, atque illum
-                obcaecati laboriosam quia facere et.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam
-                dignissimos officiis suscipit.</p>
-            {{-- I need to check this section to make sure it is with properly colours and formating --}}
-        </div><!-- end Experience-Container -->
+        @endforeach
+        
     </div><!-- end Experiencies Container -->
 </x-app-layout>
