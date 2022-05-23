@@ -13,14 +13,14 @@
                 <div class="mb-6">
                     <label for="name" class="font-semibold block mb-1">Nome Completo</label>
                     <input type="text" name="name" class="rounded-md bg-gray-100 border border-gray-200 w-full"
-                        placeholder="Ex: João de Souza">
+                        placeholder="Ex: João de Souza" value="{{ $user->name }}">
                 </div>
 
                 {{-- Email --}}
                 <div class="mb-6">
                     <label for="email" class="font-semibold block mb-1">E-mail</label>
                     <input type="text" name="email" class="w-full rounded-md bg-gray-100 border border-gray-200"
-                        placeholder="joaodasilva@hotmail.com">
+                        placeholder="joaodasilva@hotmail.com" value="{{ $user->email }}">
                 </div>
 
                 
@@ -28,7 +28,7 @@
                 <div class="mb-6">
                     <label for="address" class="font-semibold block mb-1">Endereco</label>
                     <input type="text" name="address" class="rounded-md bg-gray-100 border border-gray-200 w-full"
-                        placeholder="Rua José da Silva, 120 - Centro">
+                        placeholder="Rua José da Silva, 120 - Centro" value="{{ $user->address }}">
                 </div>
 
                 <div class="form-group flex mb-6">
@@ -36,13 +36,13 @@
                     <div class="flex flex-col w-1/2 pr-2">
                         <label for="city" class="font-semibold mb-1">Cidade</label>
                         <input type="text" name="city" class="rounded-md bg-gray-100 border border-gray-200 w-full"
-                            placeholder="Registro">
+                            placeholder="Registro" value="{{ $user->city }}">
                     </div>
                     {{-- State --}}
                     <div class="flex flex-col w-1/2">
                         <label for="state" class="font-semibold mb-1">Estado</label>
                         <input type="text" name="state" class="rounded-md bg-gray-100 border border-gray-200 w-full"
-                            placeholder="São Paulo">
+                            placeholder="São Paulo" value="{{ $user->state }}">
                     </div>
                 </div>
 
@@ -66,13 +66,13 @@
                         <div class="flex flex-col w-1/2 pr-2">
                             <label for="dob" class="font-semibold mb-1">Data de Aniversario</label>
                             <input type="date" name="dob"
-                            class="rounded-md bg-gray-100 border border-gray-200">
+                            class="rounded-md bg-gray-100 border border-gray-200" value="{{ $user->birthday }}">
                         </div>
                     {{-- CPF/CNPJ --}}
                         <div class="flex flex-col w-1/2">
                             <label for="cpf" class="font-semibold mb-1">CPF</label>
                             <input type="text" name="cpf"
-                            class="rounded-md bg-gray-100 border border-gray-200" placeholder="XXX.XXX.XXX-XX">
+                            class="rounded-md bg-gray-100 border border-gray-200" placeholder="XXX.XXX.XXX-XX" value="{{ $user->document }}">
                         </div>
                     </div>
                 </div>
@@ -80,14 +80,14 @@
                 <div class="mb-6">
                     <label for="status" class="font-semibold mb-1 block">Status</label>
                     <select name="status" class="rounded-md bg-gray-100 border border-gray-200 w-full">
-                        <option value="1">Quero receber proposta de emprego</option>
-                        <option value="0">Nao quero receber proposta de emprego</option>
+                        <option value="1" {{ ($user->status == 1)? 'selected' : '' }}>Quero receber proposta de emprego</option>
+                        <option value="0" {{ ($user->status == 0)? 'selected' : '' }}>Nao quero receber proposta de emprego</option>
                     </select>
                 </div>
                 <div class="mb-6">
                     <label for="description" class="font-semibold mb-1 block">Descricao</label>
                     <textarea name="description" rows="10" class="rounded-md bg-gray-100 border border-gray-200 w-full" style="resize:none;"
-                        placeholder="Digite uma breve descrição sua..."></textarea>
+                        placeholder="Digite uma breve descrição sua...">{{ $user->description }}</textarea>
                 </div>
 
 
