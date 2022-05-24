@@ -28,8 +28,8 @@
                 <div class="bg-white rounded-md border-gray-300 p-5 shadow-lg shadow-gray-200">
                     <div class="w-full flex items-center justify-between">
                         <div class="w-2/6 mr-4">
-                            @if (Auth::user()->profile_photo_path != null)
-                                <img class="rounded-full object-cover" src="{{ Auth::user()->profile_photo_path }}"
+                            @if (Auth::user()->photo != null)
+                                <img class="w-24 rounded-full object-cover" src="{{ asset('storage/'.Auth::user()->photo); }}"
                                     alt="{{ Auth::user()->name }}" />
                             @else
                                 <img class="inline rounded-full" src="{{ asset('img/default-user.png') }}"

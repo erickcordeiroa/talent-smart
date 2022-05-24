@@ -1,12 +1,33 @@
 <x-app-layout>
+    @if ($errors->any())
+        <div class="w-full mb-4 rounded-lg border border-red-500 bg-red-400 p-3 text-white">
+            <h5 class="text-white font-bold text-3xl mb-2">Atenção!</h5>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="w-full mb-4 rounded-lg border border-green-500 bg-green-400 p-3 text-white">
+            <h5 class="text-white font-bold text-3xl mb-2">Sucesso!</h5>
+            {{ session('success') }}
+        </div>
+    @endif
+
+
     <div class="profile bg-white border-transparent rounded-md">
-        <form action="#" method="post" enctype="multipart/form-data">
+        <form action="{{ route('app.update.perfil') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="form flex flex-col px-8 py-4">
 
                 {{-- Image Perfil --}}
                 <div class="mb-6">
-                    <label for="name" class="font-semibold block mb-1">Foto Perfil</label>
-                    <input type="file" class="p-2 font-semibold text-sm w-full" accept="image/*"/>
+                    <label for="photo" class="font-semibold block mb-1">Foto Perfil</label>
+                    <input type="file" id="photo" name="photo" class="p-2 font-semibold text-sm w-full"
+                        accept="image/*" />
                 </div>
 
                 {{-- Name --}}
@@ -23,7 +44,7 @@
                         placeholder="joaodasilva@hotmail.com" value="{{ $user->email }}">
                 </div>
 
-                
+
                 {{-- Address --}}
                 <div class="mb-6">
                     <label for="address" class="font-semibold block mb-1">Endereco</label>
@@ -55,8 +76,8 @@
                             placeholder="********">
                     </div>
                     <div class="flex flex-col w-1/2">
-                        <label for="conf-password" class="font-semibold mb-1">Confirmar Senha</label>
-                        <input type="password" name="conf-password"
+                        <label for="password_confirmation" class="font-semibold mb-1">Confirmar Senha</label>
+                        <input type="password" name="password_confirmation"
                             class="rounded-md bg-gray-100 border border-gray-200" placeholder="********">
                     </div>
                 </div>
@@ -65,14 +86,14 @@
                     <div class="mb-6 flex">
                         <div class="flex flex-col w-1/2 pr-2">
                             <label for="dob" class="font-semibold mb-1">Data de Aniversario</label>
-                            <input type="date" name="dob"
-                            class="rounded-md bg-gray-100 border border-gray-200" value="{{ $user->birthday }}">
+                            <input type="date" name="birthday" class="rounded-md bg-gray-100 border border-gray-200"
+                                value="{{ $user->birthday }}">
                         </div>
-                    {{-- CPF/CNPJ --}}
+                        {{-- CPF/CNPJ --}}
                         <div class="flex flex-col w-1/2">
                             <label for="cpf" class="font-semibold mb-1">CPF</label>
-                            <input type="text" name="cpf"
-                            class="rounded-md bg-gray-100 border border-gray-200" placeholder="XXX.XXX.XXX-XX" value="{{ $user->document }}">
+                            <input type="text" name="document" class="rounded-md bg-gray-100 border border-gray-200"
+                                placeholder="XXX.XXX.XXX-XX" value="{{ $user->document }}">
                         </div>
                     </div>
                 </div>
@@ -80,8 +101,10 @@
                 <div class="mb-6">
                     <label for="status" class="font-semibold mb-1 block">Status</label>
                     <select name="status" class="rounded-md bg-gray-100 border border-gray-200 w-full">
-                        <option value="1" {{ ($user->status == 1)? 'selected' : '' }}>Quero receber proposta de emprego</option>
-                        <option value="0" {{ ($user->status == 0)? 'selected' : '' }}>Nao quero receber proposta de emprego</option>
+                        <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Quero receber proposta de
+                            emprego</option>
+                        <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Nao quero receber proposta de
+                            emprego</option>
                     </select>
                 </div>
                 <div class="mb-6">

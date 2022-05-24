@@ -25,6 +25,7 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/cursos', [EducationsController::class, 'index'])->name('app.educations');
 
     Route::get('/perfil', [UsersController::class, 'index'])->name('app.perfil');
+    Route::post('/profile', [UsersController::class, 'update'])->name('app.update.perfil');
 
     Route::get('/minhas-vagas', function(){
         return view('candidate.jobs.list');
