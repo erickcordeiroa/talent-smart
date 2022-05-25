@@ -1,4 +1,15 @@
 <x-app-layout>
+    @if ($errors->any())
+        <div class="w-full mb-4 rounded-lg border border-red-500 bg-red-400 p-3 text-white">
+            <h5 class="text-white font-bold text-3xl mb-2">Atenção!</h5>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="experiencies-container bg-white rounded-lg px-6 py-3 ">
 
         <div class="header-vacancy-item flex w-full justify-between items-center border-b border-gray-200 py-4 mb-4">
@@ -15,14 +26,14 @@
                 <div class="mb-6">
                     <label for="title" class="font-semibold block mb-1">Título</label>
                     <input type="text" name="title" class="rounded-md bg-gray-100 border border-gray-200 w-full"
-                        placeholder="Ex: Atendente de Supermercado">
+                        placeholder="Ex: Atendente de Supermercado" value="{{ old('title') }}">
                 </div>
 
                 {{-- Company --}}
                 <div class="mb-6">
                     <label for="company" class="font-semibold block mb-1">Nome da Empresa</label>
                     <input type="text" name="company" class="w-full rounded-md bg-gray-100 border border-gray-200"
-                        placeholder="Ex: Supermercado Estrela Azul">
+                        placeholder="Ex: Supermercado Estrela Azul" value="{{ old('company') }}">
                 </div>
 
 
@@ -30,24 +41,25 @@
                 <div class="mb-6">
                     <label for="city" class="font-semibold block mb-1">Localidade</label>
                     <input type="text" name="city" class="rounded-md bg-gray-100 border border-gray-200 w-full"
-                        placeholder="Ex: Registro-SP">
+                        placeholder="Ex: Registro-SP" value="{{ old('city') }}">
                 </div>
 
                 <div class="form-group flex mb-6 items-center">
                     {{-- Start --}}
                     <div class="flex flex-col w-1/3 mr-2">
                         <label for="start" class="font-semibold mb-1">Data de início</label>
-                        <input type="date" name="start" class="rounded-md bg-gray-100 border border-gray-200 w-full">
+                        <input type="date" name="start" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ old('start') }}">
                     </div>
                     {{-- End --}}
                     <div class="flex flex-col w-1/3 mr-2">
                         <label for="end" class="font-semibold mb-1">Data de término</label>
-                        <input type="date" name="end" class="rounded-md bg-gray-100 border border-gray-200 w-full">
+                        <input type="date" name="end" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ old('end') }}">
                     </div>
                     <div class="flex w-1/3 form-check mt-6 pl-4">
                         <input
+                            name="currently"
                             class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox" value="" id="flexCheckDefault">
+                            type="checkbox" id="flexCheckDefault">
                         <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
                             Atualmente
                         </label>
@@ -57,7 +69,7 @@
                 <div class="mb-6">
                     <label for="description" class="font-semibold mb-1 block">Descricao</label>
                     <textarea name="description" rows="10" class="rounded-md bg-gray-100 border border-gray-200 w-full" style="resize:none;"
-                        placeholder="Digite uma breve descrição do que fazia..."></textarea>
+                        placeholder="Digite uma breve descrição do que fazia...">{{ old('description') }}</textarea>
                 </div>
 
 

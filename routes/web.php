@@ -23,10 +23,17 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/experiencias', [ExperiencesController::class, 'index'])->name('app.experiences');
     Route::get('/experiencias/nova', [ExperiencesController::class, 'create'])->name('app.create.experiences');
     Route::post('/experiencias/nova', [ExperiencesController::class, 'store'])->name('app.store.experiences');
+    Route::get('/experiencias/editar/{id}', [ExperiencesController::class, 'edit'])->name('app.edit.experiences');
+    Route::put('/experiencias/editar/{id}', [ExperiencesController::class, 'update'])->name('app.update.experiences');
+    Route::delete('/experiencias/{id}', [ExperiencesController::class, 'destroy'])->name('app.destroy.experiences');
 
+    //Finalizar Crud Amanha Cedo
     Route::get('/cursos', [EducationsController::class, 'index'])->name('app.educations');
     Route::get('/cursos/novo', [EducationsController::class, 'create'])->name('app.create.educations');
     Route::post('/cursos/novo', [EducationsController::class, 'store'])->name('app.store.educations');
+    Route::get('/cursos/editar/{id}', [EducationsController::class, 'edit'])->name('app.edit.educations');
+    Route::put('/cursos/editar/{id}', [EducationsController::class, 'update'])->name('app.update.educations');
+    Route::delete('/cursos/{id}', [EducationsController::class, 'destroy'])->name('app.destroy.educations');
 
     Route::get('/perfil', [UsersController::class, 'index'])->name('app.perfil');
     Route::post('/profile', [UsersController::class, 'update'])->name('app.update.perfil');

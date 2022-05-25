@@ -18,7 +18,8 @@
             </div>
         </div>
 
-        <form action="{{ route('app.store.educations') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('app.edit.educations', ['id' => $education->id]) }}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="form flex flex-col py-4">
 
@@ -26,21 +27,21 @@
                 <div class="mb-6">
                     <label for="title" class="font-semibold block mb-1">Título</label>
                     <input type="text" name="title" class="rounded-md bg-gray-100 border border-gray-200 w-full"
-                        placeholder="Ex: Atendente de Supermercado" value="{{ old('title') }}">
+                        placeholder="Ex: Atendente de Supermercado" value="{{ $education->title }}">
                 </div>
 
                 {{-- Degree --}}
                 <div class="mb-6">
                     <label for="degree" class="font-semibold block mb-1">Tempo (Perguntar ao Patrick)</label>
                     <input type="text" name="degree" class="w-full rounded-md bg-gray-100 border border-gray-200"
-                        placeholder="Ex: Curso Online" value="{{ old('degree') }}">
+                        placeholder="Ex: Curso Online" value="{{ $education->degree }}">
                 </div>
 
                 {{-- Company --}}
                 <div class="mb-6">
                     <label for="company" class="font-semibold block mb-1">Nome da Instituição</label>
                     <input type="text" name="company" class="w-full rounded-md bg-gray-100 border border-gray-200"
-                        placeholder="Ex: Udemy" value="{{ old('company') }}">
+                        placeholder="Ex: Udemy" value="{{ $education->company }}">
                 </div>
 
 
@@ -48,19 +49,19 @@
                     {{-- Start --}}
                     <div class="flex flex-col w-1/2 mr-2">
                         <label for="start" class="font-semibold mb-1">Data de início</label>
-                        <input type="date" name="start" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ old('start') }}">
+                        <input type="date" name="start" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ $education->start }}">
                     </div>
                     {{-- End --}}
                     <div class="flex flex-col w-1/2 mr-2">
                         <label for="end" class="font-semibold mb-1">Data de término</label>
-                        <input type="date" name="end" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ old('end') }}">
+                        <input type="date" name="end" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ $education->end }}">
                     </div>
                 </div>
 
                 <div class="mb-6">
                     <label for="description" class="font-semibold mb-1 block">Descricao</label>
                     <textarea name="description" rows="10" class="rounded-md bg-gray-100 border border-gray-200 w-full" style="resize:none;"
-                        placeholder="Digite uma breve descrição do que você aprenderá/aprendeu...">{{ old('description') }}</textarea>
+                        placeholder="Digite uma breve descrição do que você aprenderá/aprendeu...">{{ $education->description }}</textarea>
                 </div>
 
 

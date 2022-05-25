@@ -17,12 +17,12 @@ class CreateExperiencesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->onDelete('cascade');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('company');
             $table->string('city');
             $table->date('start')->nullable();
             $table->date('end')->nullable();
-            $table->boolean('currently')->default(0);
+            $table->boolean('currently')->default(0)->nullable();
             $table->timestamps();
         });
     }
