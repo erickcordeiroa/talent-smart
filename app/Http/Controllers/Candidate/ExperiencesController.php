@@ -26,7 +26,7 @@ class ExperiencesController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidate.experiences.create');
     }
 
     /**

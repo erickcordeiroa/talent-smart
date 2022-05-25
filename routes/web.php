@@ -21,8 +21,12 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     })->name('app.jobitem');
 
     Route::get('/experiencias', [ExperiencesController::class, 'index'])->name('app.experiences');
+    Route::get('/experiencias/nova', [ExperiencesController::class, 'create'])->name('app.create.experiences');
+    Route::post('/experiencias/nova', [ExperiencesController::class, 'store'])->name('app.store.experiences');
 
     Route::get('/cursos', [EducationsController::class, 'index'])->name('app.educations');
+    Route::get('/cursos/novo', [EducationsController::class, 'create'])->name('app.create.educations');
+    Route::post('/cursos/novo', [EducationsController::class, 'store'])->name('app.store.educations');
 
     Route::get('/perfil', [UsersController::class, 'index'])->name('app.perfil');
     Route::post('/profile', [UsersController::class, 'update'])->name('app.update.perfil');
