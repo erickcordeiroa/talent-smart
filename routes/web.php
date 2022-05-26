@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Candidate\ExperiencesController;
 use App\Http\Controllers\Candidate\EducationsController;
+use App\Http\Controllers\Candidate\HomeController;
+use App\Http\Controllers\Company\HomeController as CompanyHomeController;
 use App\Http\Controllers\UsersController;
 
 //Routes Web
@@ -12,12 +14,10 @@ Route::get('/', function () {
 
 //Routes Candidade
 Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
-    Route::get('/', function(){
-        return view('candidate.index');
-    })->name('app.dash');
+    Route::get('/', [HomeController::class, 'index'])->name('app.dash');
 
-    Route::get('/vaga/id', function(){
-        return view('candidate.job');
+    Route::get('/vaga/{id}', function(){
+        return view('candidate.jobs.jobitem');
     })->name('app.jobitem');
 
     Route::get('/experiencias', [ExperiencesController::class, 'index'])->name('app.experiences');
@@ -46,9 +46,7 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
 
 //Routes Company
 Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
-    Route::get('/', function(){
-        return view('company.index');
-    })->name('company.dash');
+    Route::get('/', [CompanyHomeController::class, 'index'])->name('company.dash');
 });
 
 require __DIR__.'/auth.php';
