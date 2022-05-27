@@ -11,6 +11,10 @@ class HomeController extends Controller
 {
     public function index()
     {
+        if(Auth::user()->profile == null){
+            return redirect()->route('app.disc');
+        }
+
         $jobs = DB::table('jobs')
                 ->join('users', 'jobs.user_id', '=', 'users.id')
                 ->leftJoin('user_jobs', 'jobs.id', '=', 'user_jobs.job_id')
@@ -20,5 +24,10 @@ class HomeController extends Controller
                 ->get();
 
         return view('candidate.index', ['jobs' => $jobs]);
+    }
+
+    public function disc()
+    {
+        return view('candidate.disc');
     }
 }

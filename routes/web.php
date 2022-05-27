@@ -16,6 +16,9 @@ Route::get('/', function () {
 Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('app.dash');
 
+    //Test Disc
+    Route::get('/disc', [HomeController::class, 'disc'])->name('app.disc');
+
     Route::get('/vaga/{id}', function(){
         return view('candidate.jobs.jobitem');
     })->name('app.jobitem');
