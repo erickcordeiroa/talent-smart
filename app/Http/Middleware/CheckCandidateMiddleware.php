@@ -19,7 +19,7 @@ class CheckCandidateMiddleware
     {
         $user = Auth::user();
 
-        if($user->account != 'company' && $user->account != 'candidate'){
+        if($user->account != 'candidate'){
             return redirect()->route('login');
         }
 
