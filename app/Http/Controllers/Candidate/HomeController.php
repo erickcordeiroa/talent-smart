@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Candidate;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,13 +18,17 @@ class HomeController extends Controller
 
         $jobs = DB::table('jobs')
                 ->join('users', 'jobs.user_id', '=', 'users.id')
+                ->join('categories', 'jobs.category_id', '=', 'categories.id')
                 ->leftJoin('user_jobs', 'jobs.id', '=', 'user_jobs.job_id')
-                ->select('jobs.*', 'users.fantasy', 'users.photo')
+                ->select('jobs.*', 'users.fantasy', 'users.photo', 'categories.title as categories')
                 ->where('user_jobs.user_id', '<>', Auth::user()->id)
                 ->orWhereNull('user_jobs.id')
-                ->get();
+                ->paginate();
 
-        return view('candidate.index', ['jobs' => $jobs]);
+        return view('candidate.index', [
+            'jobs' => $jobs,
+            'categories' => Category::all()
+        ]);
     }
 
     public function disc()

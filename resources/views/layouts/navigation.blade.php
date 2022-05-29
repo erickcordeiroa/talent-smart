@@ -40,9 +40,15 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link href="{{ route('app.perfil') }}">
-                            {{ __('Meu Perfil') }}
-                        </x-dropdown-link>
+                        @if (Auth::user()->account == 'candidate')
+                            <x-dropdown-link href="{{ route('app.perfil') }}">
+                                {{ __('Meu Perfil') }}
+                            </x-dropdown-link>
+                        @else
+                            <x-dropdown-link href="{{ route('company.profile') }}">
+                                {{ __('Meu Perfil') }}
+                            </x-dropdown-link>
+                        @endif
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

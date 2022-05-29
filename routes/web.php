@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Candidate\ExperiencesController;
 use App\Http\Controllers\Candidate\EducationsController;
 use App\Http\Controllers\Candidate\HomeController;
+use App\Http\Controllers\Candidate\UsersController;
 use App\Http\Controllers\Company\HomeController as CompanyHomeController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Company\JobsController;
+use App\Http\Controllers\Company\UserController as CompanyUserController;
 
 //Routes Web
 Route::get('/', function () {
@@ -50,6 +52,14 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
 //Routes Company
 Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
     Route::get('/', [CompanyHomeController::class, 'index'])->name('company.dash');
+
+    //Jobs
+    Route::get('/jobs', [JobsController::class, 'index'])->name('company.jobs');
+    Route::get('/jobs/novo', [JobsController::class, 'create'])->name('company.create.jobs');
+
+    //Profile
+    Route::get('/perfil', [CompanyUserController::class, 'index'])->name('company.profile');
+    Route::post('/profile', [CompanyUserController::class, 'update'])->name('company.update.perfil');
 });
 
 require __DIR__.'/auth.php';
