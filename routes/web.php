@@ -56,6 +56,9 @@ Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
     //Jobs
     Route::get('/jobs', [JobsController::class, 'index'])->name('company.jobs');
     Route::get('/jobs/novo', [JobsController::class, 'create'])->name('company.create.jobs');
+    Route::post('/jobs/novo', [JobsController::class, 'store'])->name('company.store.jobs');
+
+    Route::delete('/job/{id}', [JobsController::class, 'destroy'])->name('company.destroy.jobs');
 
     //Profile
     Route::get('/perfil', [CompanyUserController::class, 'index'])->name('company.profile');

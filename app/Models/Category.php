@@ -10,4 +10,9 @@ class Category extends Model
     use HasFactory;
 
     public $fillable = ['title'];
+
+    public function jobs()
+    {
+        return $this->hasOne(Job::class);
+    }
 }

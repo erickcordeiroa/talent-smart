@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Company\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class JobsController extends Controller
 {
@@ -18,7 +19,7 @@ class JobsController extends Controller
     public function index()
     {
         return view('company.jobs.index', [
-            'jobs' => Job::where('user_id', Auth::user()->id)->get()
+            'jobs' => Job::with('categories')->where('user_id', Auth::user()->id)->paginate(10)
         ]);
     }
 
@@ -42,7 +43,43 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->only([
+            'title', 'category_id', 'city', 'salary', 'match', 'transport',
+            'snack', 'food', 'health', 'description', 'tags'
+        ]);
+
+        $validator = Validator::make($data, [
+            'title' => ['required', 'string', 'min:3', 'max:255'],
+            'category_id' => ['required', 'integer'],
+            'city' => ['required', 'string'],
+            'salary' => ['required', 'between:0,99.99'],
+            'description' => ['string', 'max:500'],
+            'tags' => ['string', 'max:255']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('company.create.jobs')
+                ->withErrors($validator);
+        }
+
+        $job = new Job();
+        $job->user_id = Auth::user()->id;
+        $job->category_id = $data['category_id'];
+        $job->title = $data['title'];
+        $job->city = $data['city'];
+        $job->salary = $data['salary'];
+        $job->match = (!empty($data['match'])) ? 1 : 0;
+        $job->transport = (!empty($data['transport'])) ? 1 : 0;
+        $job->snack = (!empty($data['snack'])) ? 1 : 0;
+        $job->food = (!empty($data['food'])) ? 1 : 0;
+        $job->health = (!empty($data['health'])) ? 1 : 0;
+        $job->description = $data['description'];
+        $job->tags = $data['tags'];
+        $job->save();
+
+        return redirect()->route('company.jobs')
+            ->with('success', 'Parabéns sua vaga foi cadastrada!');
     }
 
     /**
@@ -87,6 +124,14 @@ class JobsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::find($id);
+        if(!$job){
+            return redirect()->route('company.jobs')
+                ->with('errors', 'A vaga que deseja excluir não existe!');
+        }
+
+        $job->delete();
+        return redirect()->route('company.jobs')
+                ->with('success', 'A vaga foi excluida com sucesso!');
     }
 }

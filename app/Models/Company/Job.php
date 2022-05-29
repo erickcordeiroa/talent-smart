@@ -29,11 +29,11 @@ class Job extends Model
 
     public function categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -34,6 +34,7 @@
                 </a>
             </div>
         </div>
+
         @if (!$jobs->isEmpty())
             @foreach ($jobs as $item)
                 <div class="experience-container mt-4 w-full flex flex-col border-t border-gray-200 py-4">
@@ -45,14 +46,15 @@
                             <h1 class="font-semibold text-3xl">{{ $item->title }}</h1>
                         </div>
                         <div class="w-1/12 flex">
-                            <a href="{{ route('app.edit.experiences', ['id' => $item->id]) }}" class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
+                            <a href="{{ route('app.edit.experiences', ['id' => $item->id]) }}"
+                                class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
                                     </path>
                                 </svg>
                             </a>
-                            <form action="{{ route('app.destroy.experiences', ['id' => $item->id]) }}" method="post">
+                            <form action="{{ route('company.destroy.jobs', ['id' => $item->id]) }}" method="post">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit"
@@ -69,7 +71,7 @@
                     </div>
 
                     {{-- Company name --}}
-                    <h2 class="font-bold">{{ $item->category_id }}</h2>
+                    <h2 class="font-bold">{{ $item->categories->title }}</h2>
                     {{-- Location --}}
                     <h3 class="text-gray-400">{{ $item->city }}</h3>
                     {{-- Description --}}
@@ -83,6 +85,8 @@
                     vaga!</p>
             </div>
         @endif
-
     </div><!-- end Experiencies Container -->
+    <div class="my-8">
+        {{ $jobs->links() }}
+    </div>
 </x-admin-layout>

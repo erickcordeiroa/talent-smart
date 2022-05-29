@@ -30,13 +30,13 @@
                     <div class="flex flex-1 px-2 py-6">
                         <div class="w-full mx-4">
                             <h4 class="text-xl font-semibold">
-                                <a href="{{ route('app.jobitem', $item) }}"
+                                <a href="{{ route('app.jobitem', ['id' => $item->id]) }}"
                                     class="hover:underline cursor-pointer">{{ $item->title }}</a>
                             </h4>
 
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
-                                    <div>{{ $item->created_at->diffForHumans() }}</div>
+                                    <div>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</div>
                                     <div>&bull;</div>
                                     <div>{{ $item->categories }}</div>
                                 </div>

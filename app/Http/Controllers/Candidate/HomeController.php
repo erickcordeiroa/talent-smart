@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Candidate;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class HomeController extends Controller
                 ->select('jobs.*', 'users.fantasy', 'users.photo', 'categories.title as categories')
                 ->where('user_jobs.user_id', '<>', Auth::user()->id)
                 ->orWhereNull('user_jobs.id')
-                ->paginate();
+                ->paginate(10);
 
         return view('candidate.index', [
             'jobs' => $jobs,

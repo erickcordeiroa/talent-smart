@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     @if ($errors->any())
         <div class="w-full mb-4 rounded-lg border border-red-500 bg-red-400 p-3 text-white">
             <h5 class="text-white font-bold text-3xl mb-2">Atenção!</h5>
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <form action="{{ route('app.store.educations') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('company.store.jobs') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form flex flex-col py-4">
 
@@ -32,7 +32,7 @@
                 {{-- Category --}}
                 <div class="mb-6">
                     <label for="category" class="font-semibold block mb-1">Categoria</label>
-                    <select required name="degree" class="w-full rounded-md bg-gray-100 border border-gray-200">
+                    <select required name="category_id" class="w-full rounded-md bg-gray-100 border border-gray-200">
                         <option value="">Selecione uma categoria</option>
                         @foreach ($categories as $item)
                             <option value="{{ $item->id }}">{{ $item->title }}</option>
@@ -58,8 +58,8 @@
                     <div class="flex w-1/3 items-center form-check pt-6">
                         <input name="match"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox" id="flexCheckDefault">
-                        <label class="form-check-label inline-block text-gray-800 pt-2" for="flexCheckDefault">
+                            type="checkbox" id="match">
+                        <label class="form-check-label inline-block text-gray-800 pt-2" for="match">
                             À Combinar
                         </label>
                     </div>
@@ -69,8 +69,8 @@
                     <div class="flex w-1/3 items-center form-check">
                         <input name="transport"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox" id="flexCheckDefault">
-                        <label class="form-check-label inline-block text-gray-800 pt-2" for="flexCheckDefault">
+                            type="checkbox" id="transport">
+                        <label class="form-check-label inline-block text-gray-800 pt-2" for="transport">
                             Vale Transporte
                         </label>
                     </div>
@@ -78,8 +78,8 @@
                     <div class="flex w-1/3 items-center form-check">
                         <input name="food"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox" id="flexCheckDefault">
-                        <label class="form-check-label inline-block text-gray-800 pt-2" for="flexCheckDefault">
+                            type="checkbox" id="food">
+                        <label class="form-check-label inline-block text-gray-800 pt-2" for="food">
                             Vale Alimentação
                         </label>
                     </div>
@@ -87,8 +87,8 @@
                     <div class="flex w-1/3 items-center form-check">
                         <input name="snack"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox" id="flexCheckDefault">
-                        <label class="form-check-label inline-block text-gray-800 pt-2" for="flexCheckDefault">
+                            type="checkbox" id="snack">
+                        <label class="form-check-label inline-block text-gray-800 pt-2" for="snack">
                             Vale Refeição
                         </label>
                     </div>
@@ -96,8 +96,8 @@
                     <div class="flex w-1/3 items-center form-check">
                         <input name="health"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox" id="flexCheckDefault">
-                        <label class="form-check-label inline-block text-gray-800 pt-2" for="flexCheckDefault">
+                            type="checkbox" id="health">
+                        <label class="form-check-label inline-block text-gray-800 pt-2" for="health">
                             Convênio Médico
                         </label>
                     </div>
@@ -140,4 +140,4 @@
         </form>
 
     </div><!-- end Educations Container -->
-</x-app-layout>
+</x-admin-layout>
