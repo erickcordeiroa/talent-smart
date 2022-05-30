@@ -60,7 +60,7 @@ class JobsController extends Controller
 
         if ($validator->fails()) {
             return redirect()->route('company.create.jobs')
-                ->withErrors($validator);
+                ->withErrors($validator)->withInput();
         }
 
         $job = new Job();
@@ -99,9 +99,12 @@ class JobsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Job $job)
     {
-        //
+        return view('company.jobs.edit', [
+            "job" => $job,
+            "categories" => Category::all()
+        ]);
     }
 
     /**
@@ -111,9 +114,44 @@ class JobsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Job $job)
     {
-        //
+        $data = $request->only([
+            'title', 'category_id', 'city', 'salary', 'match', 'transport',
+            'snack', 'food', 'health', 'description', 'tags'
+        ]);
+
+        $validator = Validator::make($data, [
+            'title' => ['required', 'string', 'min:3', 'max:255'],
+            'category_id' => ['required', 'integer'],
+            'city' => ['required', 'string'],
+            'salary' => ['required', 'between:0,99.99'],
+            'description' => ['string', 'max:500'],
+            'tags' => ['string', 'max:255']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('company.create.jobs')
+                ->withErrors($validator)->withInput();
+        }
+
+        $job = Job::find($job->id);
+        $job->user_id = Auth::user()->id;
+        $job->category_id = $data['category_id'];
+        $job->title = $data['title'];
+        $job->city = $data['city'];
+        $job->salary = $data['salary'];
+        $job->match = (!empty($data['match'])) ? 1 : 0;
+        $job->transport = (!empty($data['transport'])) ? 1 : 0;
+        $job->snack = (!empty($data['snack'])) ? 1 : 0;
+        $job->food = (!empty($data['food'])) ? 1 : 0;
+        $job->health = (!empty($data['health'])) ? 1 : 0;
+        $job->description = $data['description'];
+        $job->tags = $data['tags'];
+        $job->save();
+
+        return redirect()->route('company.jobs')
+            ->with('success', 'Parabéns sua vaga foi cadastrada!');
     }
 
     /**

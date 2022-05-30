@@ -18,7 +18,7 @@ class EducationsController extends Controller
      */
     public function index()
     {
-        $educations = Education::where('user_id', auth()->user()->id)->get();
+        $educations = Education::where('user_id', auth()->user()->id)->paginate(10);
         return view('candidate.educations.educations', ['educations' => $educations]);
     }
 

@@ -1,28 +1,33 @@
 <x-app-layout>
-    <div class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+    <a href="{{ route('app.dash') }}" class="hover:underline flex items-center justify-between w-32 font-bold text-sm mb-4">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7">
+            </path>
+        </svg>
+        <span class="block">Todas as Vagas</span>
+    </a>
+    <div class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex">
         <div class="flex flex-1 px-2 py-6">
             <div class="w-full mx-4">
                 {{-- Title Job --}}
-                <h4 class="text-2xl font-semibold">
-                    <a href="#" class="hover:underline">A random title can go here</a>
-                </h4>
+                <h4 class="text-2xl font-semibold">{{ $job->title }}</h4>
 
                 <div class="flex items-center justify-between">
                     <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
-                        <div>10 hours ago</div>
+                        <div>{{ \Carbon\Carbon::parse($job->created_at)->diffForHumans() }}</div>
                         <div>&bull;</div>
-                        <div>Category 1</div>
+                        <div>{{ $job->categories->title }}</div>
                     </div>
                 </div>
 
                 {{-- Company Job --}}
                 <div class="mt-4 flex items-center">
                     <div class="mr-4">
-                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar"
+                        <img src="{{ asset('storage/' . $job->users->photo) }}" alt="avatar"
                             class="w-12 h-12 rounded-full">
                     </div>
                     <div>
-                        <h6 class="font-semibold">EWD Marketing Digital e Desenvolvimento Web</h6>
+                        <h6 class="font-semibold">{{ $job->users->fantasy }}</h6>
                     </div>
                 </div>
 
@@ -30,11 +35,12 @@
                 <div class="mt-4 flex items-center">
                     <div class="mr-12">
                         <span class="block font-bold text-md">Localização:</span>
-                        <h6 class="text-sm text-orange-500">Registro-SP</h6>
+                        <h6 class="text-sm text-orange-500">{{ $job->city }}</h6>
                     </div>
                     <div>
                         <span class="block font-bold text-md">Salário:</span>
-                        <h6 class="text-sm text-orange-500">Á Combinar</h6>
+                        <h6 class="text-sm text-orange-500">
+                            {{ $job->match == 1 ? 'A Combinar' : number_format($job->salary, 2, ',', '.') }}</h6>
                     </div>
                 </div>
 
@@ -44,59 +50,47 @@
 
                     <div class="w-full flex flex-wrap justify-start items-center">
 
-                        <div class="flex justify-between items-center my-2 mr-2">
-                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="{{ $job->transport ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                            Benefício 01
+                            Vale Transporte
                         </div>
-                        <div class="flex justify-between items-center my-2 mr-2">
-                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="{{ $job->food ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                            Benefício 01
+                            Vale Refeição
                         </div>
-                        <div class="flex justify-between items-center my-2 mr-2">
-                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="{{ $job->snack ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                            Benefício 01
+                            Vale Alimentação
                         </div>
-                        <div class="flex justify-between items-center my-2 mr-2">
-                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="{{ $job->health ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                            Benefício 01
+                            Convênio Médico
                         </div>
-                        <div class="flex justify-between items-center my-2 mr-2">
-                            <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            Benefício 01
-                        </div>
-
-                        
                     </div>
-                    
+
                 </div>
 
                 {{-- Description --}}
                 <div class="description-job mt-4">
                     <span class="block font-bold text-md">Descrição:</span>
                     <p class="text-gray-600">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quo quisquam tempore modi iure
-                        at possimus fugit placeat perferendis, ducimus aperiam eaque excepturi sapiente atque quos!
-                        Nihil optio, natus architecto perspiciatis. Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Corporis iusto quis blanditiis labore nisi possimus consectetur porro,
-                        architecto culpa provident voluptatibus rem nulla commodi nemo, inventore reprehenderit!
-                        Dolor perspiciatis numquam, vitae dolorum quidem ullam voluptatem perferendis quia
-                        exercitationem atque animi dolore! Maxime nobis natus maiores eius quae, iure nesciunt
-                        aperiam.
+                        {{ $job->description }}
                     </p>
                 </div>
 

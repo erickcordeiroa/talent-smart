@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Candidate;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Company\Job;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,14 @@ class HomeController extends Controller
         return view('candidate.index', [
             'jobs' => $jobs,
             'categories' => Category::all()
+        ]);
+    }
+
+    public function jobItem($id)
+    {
+        $job = Job::find($id);
+        return view('candidate.jobs.jobitem', [
+            'job' => $job
         ]);
     }
 

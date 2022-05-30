@@ -46,7 +46,7 @@
                             <h1 class="font-semibold text-3xl">{{ $item->title }}</h1>
                         </div>
                         <div class="w-1/12 flex">
-                            <a href="{{ route('app.edit.educations', ['id' => $item->id]) }}"
+                            <a href="{{ route('app.edit.educations', $item) }}"
                                 class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -89,5 +89,7 @@
             </div>
         @endif
 
+        <div class="my-8">{{ $educations->links() }}</div>
     </div><!-- end Educations Container -->
+
 </x-app-layout>

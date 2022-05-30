@@ -20,10 +20,7 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
 
     //Test Disc
     Route::get('/disc', [HomeController::class, 'disc'])->name('app.disc');
-
-    Route::get('/vaga/{id}', function(){
-        return view('candidate.jobs.jobitem');
-    })->name('app.jobitem');
+    Route::get('/vaga/{id}', [HomeController::class, 'jobItem'])->name('app.jobitem');
 
     Route::get('/experiencias', [ExperiencesController::class, 'index'])->name('app.experiences');
     Route::get('/experiencias/nova', [ExperiencesController::class, 'create'])->name('app.create.experiences');
@@ -32,7 +29,6 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::put('/experiencias/editar/{id}', [ExperiencesController::class, 'update'])->name('app.update.experiences');
     Route::delete('/experiencias/{id}', [ExperiencesController::class, 'destroy'])->name('app.destroy.experiences');
 
-    //Finalizar Crud Amanha Cedo
     Route::get('/cursos', [EducationsController::class, 'index'])->name('app.educations');
     Route::get('/cursos/novo', [EducationsController::class, 'create'])->name('app.create.educations');
     Route::post('/cursos/novo', [EducationsController::class, 'store'])->name('app.store.educations');
@@ -57,7 +53,8 @@ Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
     Route::get('/jobs', [JobsController::class, 'index'])->name('company.jobs');
     Route::get('/jobs/novo', [JobsController::class, 'create'])->name('company.create.jobs');
     Route::post('/jobs/novo', [JobsController::class, 'store'])->name('company.store.jobs');
-
+    Route::get('/jobs/editar/{job}', [JobsController::class, 'edit'])->name('company.edit.jobs');
+    Route::put('/jobs/editar/{job}', [JobsController::class, 'update'])->name('company.update.jobs');
     Route::delete('/job/{id}', [JobsController::class, 'destroy'])->name('company.destroy.jobs');
 
     //Profile

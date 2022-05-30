@@ -24,45 +24,45 @@
 
     <div class="jobs-container space-y-6 my-6">
         @if (!$jobs->isEmpty())
-            @foreach ($jobs as $item)
+            @foreach ($jobs as $job)
                 <div
                     class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex border border-blue-500">
                     <div class="flex flex-1 px-2 py-6">
                         <div class="w-full mx-4">
                             <h4 class="text-xl font-semibold">
-                                <a href="{{ route('app.jobitem', ['id' => $item->id]) }}"
-                                    class="hover:underline cursor-pointer">{{ $item->title }}</a>
+                                <a href="{{ route('app.jobitem', ["id" => $job->id]) }}"
+                                    class="hover:underline cursor-pointer">{{ $job->title }}</a>
                             </h4>
 
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
-                                    <div>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</div>
+                                    <div>{{ \Carbon\Carbon::parse($job->created_at)->diffForHumans() }}</div>
                                     <div>&bull;</div>
-                                    <div>{{ $item->categories }}</div>
+                                    <div>{{ $job->categories }}</div>
                                 </div>
                             </div>
 
                             <div class="mt-4 flex items-center">
                                 <div class="mr-4">
-                                    <img src="{{ asset('storage/' . $item->photo) }}" alt="avatar"
+                                    <img src="{{ asset('storage/' . $job->photo) }}" alt="avatar"
                                         class="w-12 h-12 rounded-full">
                                 </div>
                                 <div>
-                                    <h6>{{ $item->fantasy }}</h6>
+                                    <h6>{{ $job->fantasy }}</h6>
                                 </div>
                             </div>
 
                             <div class="text-gray-600 mt-4 line-clamp-3">
-                                {{ $item->description }}
+                                {{ $job->description }}
                             </div>
 
                             <div class="flex items-center space-x-2 mt-4 justify-between">
                                 <div>
                                     <span class="font-bold block">Salário</span>
                                     <span
-                                        class="text-md text-orange-500">{{ $item->match == 1 ? 'A Combinar' : number_format($item->salary, 2, ',', '.') }}</span>
+                                        class="text-md text-orange-500">{{ $job->match == 1 ? 'A Combinar' : number_format($job->salary, 2, ',', '.') }}</span>
                                 </div>
-                                <a href="{{ route('app.jobitem', ['id' => $item->id]) }}"
+                                <a href="{{ route('app.jobitem', ["id" => $job->id]) }}"
                                     class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                                     Ver informações da vaga
                                 </a>
