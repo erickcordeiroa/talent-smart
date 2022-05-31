@@ -36,7 +36,7 @@
 
             <div class="flex justify-between items-center">
                 <div class="view-button mr-3">
-                    <a href="{{ route('app.jobitem', ['id' => 1]) }}"
+                    <a href="{{ route('app.jobItem', ["id" => $job->id]) }}"
                         class="flex justify-between items-center p-2 font-semibold bg-blue-500 
                             hover:bg-blue-900 text-sm text-white rounded-md transition duration-150 ease-in">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

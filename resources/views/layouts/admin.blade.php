@@ -37,13 +37,17 @@
                             @endif
                         </div>
                         <div class="w-full">
-                            <h2 class="text-md font-bold">{{ Auth::user()->fantasy }}</h2>
+                            @if (Auth::user()->fantasy != null)
+                                <h2 class="text-md font-bold">{{ Auth::user()->fantasy }}</h2>
+                            @else
+                                <h2 class="text-md font-bold">Nome fantasia da sua empresa</h2>
+                            @endif
                         </div>
                     </div>
 
                     <!-- LINKS MENU -->
                     <ul class="w-full mt-6 py-4 border-t border-gray-200">
-                        <li class="p-3 border-b border-gray-100 hover:bg-blue-100 rounded-xl">
+                        <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
                             <a class="flex flex-row justify-between items-center" href="{{ route('company.dash') }}">
                                 <span>Todos os Candidatos</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,7 +56,7 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="p-3 border-b border-gray-100 hover:bg-blue-100 rounded-xl">
+                        <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
                             <a class="flex flex-row justify-between items-center" href="{{ route('app.jobs') }}">
                                 <span>Interessados </span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,8 +65,8 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="p-3 border-b border-gray-100 hover:bg-blue-100 rounded-xl">
-                            <a class="flex flex-row justify-between items-center" href="{{ route('app.jobs') }}">
+                        <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
+                            <a class="flex flex-row justify-between items-center" href="{{ route('company.jobs') }}">
                                 <span>Cadastrar Vagas</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
