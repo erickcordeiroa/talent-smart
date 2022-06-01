@@ -31,9 +31,9 @@
 
                 {{-- Degree --}}
                 <div class="mb-6">
-                    <label for="degree" class="font-semibold block mb-1">Tempo (Perguntar ao Patrick)</label>
+                    <label for="degree" class="font-semibold block mb-1">Diploma</label>
                     <input type="text" name="degree" class="w-full rounded-md bg-gray-100 border border-gray-200"
-                        placeholder="Ex: Curso Online" value="{{ old('degree') }}">
+                        placeholder="Ex: Bacharelado" value="{{ old('degree') }}">
                 </div>
 
                 {{-- Company --}}

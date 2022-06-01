@@ -33,10 +33,10 @@
 
                 <div class="space-x-6">
                     <ul class="flex items-center space-x-8">
-                        <li><a href="#">Início</a></li>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Depoimentos</a></li>
+                        <li><a href="#" class="hidden md:block">Início</a></li>
+                        <li><a href="#" class="hidden md:block">Sobre</a></li>
+                        <li><a href="#" class="hidden md:block">Serviços</a></li>
+                        <li><a href="#" class="hidden md:block">Depoimentos</a></li>
                     </ul>
                 </div>
                 <div class="space-x-6">
@@ -53,7 +53,7 @@
                             <li><a href="{{ route('login') }}">Entrar</a></li>
                             <li><a href="{{ route('register') }}"
                                     class="ml-4 px-6 py-2 rounded-full bg-blue-800 text-white 
-                                        font-bold hover:bg-blue-900 transition ease-in duration-150">Cadastre-se</a>
+                                        font-bold whitespace-nowrap dhover:bg-blue-900 transition ease-in duration-150">Cadastre-se</a>
                             </li>
                         </ul>
                     @endauth
@@ -85,15 +85,21 @@
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link href="/">
-                    Contato
+                    Sobre
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="/">
+                    Serviços
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="/">
+                    Depoimentos
                 </x-responsive-nav-link>
             </div>
         </div>
     </nav>
 
-    <section class="max-w-7xl mx-auto py-24">
+    <section class="max-w-7xl px-2 md:px-0 mx-auto py-24">
         <div class="flex justify-between items-center space-x-4">
-            <div class="information w-1/2 space-y-6">
+            <div class="information w-full md:w-1/2 space-y-6">
                 <h6 class="font-bold uppercase text-sm text-blue-900">Boas-vindas a TalentSmart</h6>
                 <h1 class="text-6xl font-semibold">Encontre excelentes lugares para trabalhar</h1>
                 <p class="text-lg text-gray-500">Encontre suas vagas de emprego no Talent Smart, são milhares de
@@ -106,15 +112,15 @@
                         nosso trabalho</button>
                 </div>
             </div>
-            <div class="image w-1/2">
+            <div class="image w-1/2 hidden md:block">
                 <img class="block mx-auto" src="{{ asset('img/bg-home.jpg') }}" alt="Pessoa">
             </div>
         </div>
     </section>
 
-    <section class="number_geral max-w-7xl py-10 bg-gray-100 mx-auto rounded-xl">
-        <div class="number_geral_wapper flex justify-between items-center">
-            <div class="border-r-2 border-blue-300 text-center py-6 px-32">
+    <section class="number_geral max-w-7xl  px-2 md:px-0 mx-auto ">
+        <div class="number_geral_wapper flex-col py-10 bg-gray-100 rounded-xl md:flex-row flex justify-between items-center">
+            <div class="border-b-2 md:border-r-2  md:border-b-0 border-blue-300 text-center py-6 px-32">
                 <h2 class="font-bold text-5xl">+3.500</h2>
                 <p class="text-blue-800 text-md">Vagas disponíveis</p>
             </div>
@@ -122,22 +128,22 @@
                 <h2 class="font-bold text-5xl">+2.000</h2>
                 <p class="text-blue-800 text-md">Empresas cadastradas</p>
             </div>
-            <div class="border-l-2 border-blue-300 text-center py-6 px-32">
+            <div class="border-t-2 md:border-l-2 md:border-t-0 border-blue-300 text-center py-6 px-32">
                 <h2 class="font-bold text-5xl">+1.000</h2>
                 <p class="text-blue-800 text-md">Candidatos disponíveis</p>
             </div>
         </div>
     </section>
 
-    <section class="services py-24 max-w-screen-lg mx-auto">
+    <section class="services  py-24 max-w-screen-lg mx-auto">
         <div class="mb-10">
             <p class="pt-6 pb-3 text-blue-500 uppercase text-center">Serviços</p>
             <h2 class="text-4xl text-center font-bold">Como podemos ajuda-lo <br> a encontrar uma vaga ou candidato?
             </h2>
         </div>
-        <div class="services-wrapper flex flex-wrap justify-between items-center space-y-8">
+        <div class="services-wrapper px-2 md:px-0 md:flex-row flex-wrap flex flex-col justify-between items-center space-y-8">
 
-            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-80 mt-10">
+            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-full md:w-80 mt-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
@@ -149,7 +155,7 @@
                     voluptate accusantium veniam corrupti, autem error dolore quae ad itaque ex ipsum dolores mollitia
                     blanditiis in.</p>
             </div>
-            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-80 mt-10">
+            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-full md:w-80 mt-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
@@ -161,7 +167,7 @@
                     voluptate accusantium veniam corrupti, autem error dolore quae ad itaque ex ipsum dolores mollitia
                     blanditiis in.</p>
             </div>
-            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-80 mt-10">
+            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-full md:w-80 mt-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
@@ -173,7 +179,7 @@
                     voluptate accusantium veniam corrupti, autem error dolore quae ad itaque ex ipsum dolores mollitia
                     blanditiis in.</p>
             </div>
-            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-80 mt-10">
+            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-full md:w-80 mt-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
@@ -185,7 +191,7 @@
                     voluptate accusantium veniam corrupti, autem error dolore quae ad itaque ex ipsum dolores mollitia
                     blanditiis in.</p>
             </div>
-            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-80 mt-10">
+            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-full md:w-80 mt-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
@@ -197,7 +203,7 @@
                     voluptate accusantium veniam corrupti, autem error dolore quae ad itaque ex ipsum dolores mollitia
                     blanditiis in.</p>
             </div>
-            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-80 mt-10">
+            <div class="services-wrapper-box border border-blue-400 px-6 py-10 rounded-xl shadow-sm w-full md:w-80 mt-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
@@ -214,11 +220,11 @@
     </section> <!-- end Sevices -->
 
     <section class="about py-24 max-w-7xl mx-auto">
-        <div class="about-wrapper flex flex-wrap justify-between items-center">
-            <div class="about-wrapper-img w-1/2 p-3">
+        <div class="about-wrapper flex flex-col md:flex-row flex-wrap justify-between items-center">
+            <div class="about-wrapper-img w-full md:w-1/2 p-3">
                 <img class="rounded-xl" src="{{ asset('img/about.jpg') }}" alt="About">
             </div>
-            <div class="about-wrapper-text w-1/2 p-8">
+            <div class="about-wrapper-text w-full md:w-1/2 p-8">
                 <p class="pt-6 pb-3 text-blue-500 uppercase">Sobre Nós</p>
                 <h2 class="text-4xl font-bold mb-4">Entenda quem somos <br> e porque existimos</h2>
                 <p class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione atque dolores libero necessitatibus
