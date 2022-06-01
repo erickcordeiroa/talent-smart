@@ -21,7 +21,7 @@
                     <div class="description line-clamp-3 mb-4">
                         {{ $item->description}}
                     </div>
-                    <a href="#" class="block py-3 px-6 text-center bg-blue-800 text-white rounded-lg">Ver perfil completo</a>
+                    <a href="{{ route('company.user', $item) }}" class="block py-3 px-6 text-center bg-blue-800 text-white rounded-lg">Ver perfil completo</a>
                 </div>
             @endforeach
         @else

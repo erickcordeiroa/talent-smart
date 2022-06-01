@@ -20,7 +20,7 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
 
     //Test Disc
     Route::get('/disc', [HomeController::class, 'disc'])->name('app.disc');
-    Route::get('/vaga/{id}', [HomeController::class, 'jobItem'])->name('app.jobitem');
+    Route::get('/vaga/{job:slug}', [HomeController::class, 'jobItem'])->name('app.jobitem');
 
     Route::get('/experiencias', [ExperiencesController::class, 'index'])->name('app.experiences');
     Route::get('/experiencias/nova', [ExperiencesController::class, 'create'])->name('app.create.experiences');
@@ -48,6 +48,9 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
 //Routes Company
 Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
     Route::get('/', [CompanyHomeController::class, 'index'])->name('company.dash');
+
+    //Infos Candidate
+    Route::get('candidato/{user:slug}', [CompanyHomeController::class, 'show'])->name('company.user');
 
     //Jobs
     Route::get('/jobs', [JobsController::class, 'index'])->name('company.jobs');

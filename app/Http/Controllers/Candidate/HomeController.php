@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Candidate;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Company\Job;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -33,12 +31,9 @@ class HomeController extends Controller
         ]);
     }
 
-    public function jobItem($id)
+    public function jobItem(Job $job)
     {
-        $job = Job::find($id);
-        return view('candidate.jobs.jobitem', [
-            'job' => $job
-        ]);
+        return view('candidate.jobs.jobitem', ["job" => $job]);
     }
 
     public function disc()

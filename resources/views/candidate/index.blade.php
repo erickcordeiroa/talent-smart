@@ -30,7 +30,7 @@
                     <div class="flex flex-1 px-2 py-6">
                         <div class="w-full mx-4">
                             <h4 class="text-xl font-semibold">
-                                <a href="{{ route('app.jobitem', ["id" => $job->id]) }}"
+                                <a href="{{ route('app.jobitem', $job->slug) }}"
                                     class="hover:underline cursor-pointer">{{ $job->title }}</a>
                             </h4>
 
@@ -62,7 +62,7 @@
                                     <span
                                         class="text-md text-orange-500">{{ $job->match == 1 ? 'A Combinar' : number_format($job->salary, 2, ',', '.') }}</span>
                                 </div>
-                                <a href="{{ route('app.jobitem', ["id" => $job->id]) }}"
+                                <a href="{{ route('app.jobitem', $job->slug) }}"
                                     class="text-center bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                                     Ver informações da vaga
                                 </a>
