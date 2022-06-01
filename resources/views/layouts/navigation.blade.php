@@ -82,13 +82,43 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('app.dash')" :active="request()->routeIs('app.dash')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            @if (Auth::user()->account == 'candidate')
+                <x-responsive-nav-link :href="route('app.dash')" :active="request()->routeIs('app.dash')">
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('app.perfil') }}">
-                {{ __('Meu Perfil') }}
-            </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('app.perfil') }}" :active="request()->routeIs('app.perfil')">
+                    {{ __('Meu Perfil') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('app.jobs') }}" :active="request()->routeIs('app.jobs')">
+                    {{ __('Minhas Vagas') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('app.experiences') }}" :active="request()->routeIs('app.experiences')">
+                    {{ __('Minhas Experiêcias') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('app.educations') }}" :active="request()->routeIs('app.educations')">
+                    {{ __('Meus Cursos') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('app.dash')" :active="request()->routeIs('company.dash')">
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('company.profile') }}" :active="request()->routeIs('app.perfil')">
+                    {{ __('Meu Perfil') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('company.jobs') }}" :active="request()->routeIs('app.perfil')">
+                    {{ __('Interessados') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('company.jobs') }}" :active="request()->routeIs('app.perfil')">
+                    {{ __('Cadastrar Vagas') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

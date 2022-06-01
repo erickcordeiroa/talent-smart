@@ -43,9 +43,9 @@
                     {{-- Job Title And Icons Edit/Remove --}}
                     <div class="flex justify-center items-center">
                         <div class="w-full">
-                            <h1 class="font-semibold text-3xl">{{ $item->title }}</h1>
+                            <h1 class="font-semibold text-2xl md:text-3xl">{{ $item->title }}</h1>
                         </div>
-                        <div class="w-1/12 flex">
+                        <div class="hidden w-1/12 md:flex">
                             <a href="{{ route('app.edit.educations', $item) }}"
                                 class="mr-2 text-gray-400 hover:text-blue-500 transition duration-150 ease-in">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,6 +79,34 @@
                     <h3 class="text-gray-400">{{ $item->degree }}</h3>
                     {{-- Description --}}
                     <p class="my-4 line-clamp-3">{{ $item->description }}</p>
+
+                    {{-- Responsive Buttons --}}
+                    <div class="w-full flex md:hidden items-center justify-center">
+                        <a href="{{ route('app.edit.educations', ['id' => $item->id]) }}"
+                            class="w-1/2 flex bg-blue-500 mr-2 text-white py-2 px-8 rounded-xl">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                </path>
+                            </svg>
+                            <span>Alterar</span>
+                        </a>
+                        <form class="w-1/2 flex bg-red-500 mr-2 text-white py-2 px-8 rounded-xl"
+                            action="{{ route('app.destroy.educations', ['id' => $item->id]) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit"
+                                onclick="return confirm('Você deseja realmente excluir esse registro?')"
+                                class="flex">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                    </path>
+                                </svg>
+                                <span>Excluir</span>
+                            </button>
+                        </form>
+                    </div>
 
                 </div><!-- end education-Container -->
             @endforeach

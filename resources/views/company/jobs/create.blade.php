@@ -40,22 +40,22 @@
                     </select>
                 </div>
 
-                <div class="form-group flex mb-6 items-center">
+                <div class="form-group flex flex-col md:flex-row mb-6 items-center">
                     {{-- City --}}
-                    <div class="flex flex-col w-1/2 mr-2">
+                    <div class="flex flex-col w-full md:w-1/2 md:mr-2 mb-6 md:mb-0">
                         <label for="city" class="font-semibold mb-1">Cidade</label>
                         <input type="text" placeholder="Registro" name="city"
                             class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ old('city') }}">
                     </div>
 
                     {{-- Salary --}}
-                    <div class="flex flex-col w-1/3 mr-2">
+                    <div class="flex flex-col w-full md:w-1/3 md:mr-2">
                         <label for="salary" class="font-semibold mb-1">Salário</label>
                         <input type="text" name="salary" placeholder="R$ 3.000,00"
                             class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ old('salary') }}">
                     </div>
 
-                    <div class="flex w-1/3 items-center form-check pt-6">
+                    <div class="flex w-full md:w-1/3 items-center form-check pt-6">
                         <input name="match"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" id="match">
@@ -65,8 +65,9 @@
                     </div>
                 </div>
 
-                <div class="mb-6 flex justify-between items-center">
-                    <div class="flex w-1/3 items-center form-check">
+                <span class="mb-2 font-bold w-full block">Benefícios</span>
+                <div class="mb-6 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div class="flex w-full md:w-1/3 items-center form-check">
                         <input name="transport"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" id="transport">
@@ -75,7 +76,7 @@
                         </label>
                     </div>
 
-                    <div class="flex w-1/3 items-center form-check">
+                    <div class="flex w-full md:w-1/3 items-center form-check">
                         <input name="food"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" id="food">
@@ -84,7 +85,7 @@
                         </label>
                     </div>
 
-                    <div class="flex w-1/3 items-center form-check">
+                    <div class="flex w-full md:w-1/3 items-center form-check">
                         <input name="snack"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" id="snack">
@@ -93,7 +94,7 @@
                         </label>
                     </div>
 
-                    <div class="flex w-1/3 items-center form-check">
+                    <div class="flex w-full md:w-1/3 items-center form-check">
                         <input name="health"
                             class="form-check-input appearance-none h-6 w-6 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" id="health">
@@ -111,7 +112,8 @@
 
                 {{-- Tags --}}
                 <div class="mb-6">
-                    <label for="tags" class="font-semibold mb-1">Tags - <small class="italic">Separado por ";" (ponto e virgula) sem espaço</small></label>
+                    <label for="tags" class="font-semibold mb-1">Tags - <small class="italic">Separado por ";"
+                            (ponto e virgula) sem espaço</small></label>
                     <input type="text" placeholder="Atendimento;Banco;Empresa" name="tags"
                         class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ old('city') }}">
                 </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="filters flex space-x-6">
-        <div class="w-1/3">
+    <div class="filters flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0">
+        <div class="md:w-1/3 w-full">
             <select name="category" id="category" class="w-full rounded-xl px-4 py-2 border border-gray-200">
                 <option value="">Selecione uma categoria</option>
                 @foreach ($categories as $category)
@@ -8,7 +8,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="w-2/3 relative">
+        <div class="md:w-2/3 w-full relative">
             <input type="search" placeholder="Procure a vaga que deseja"
                 class="w-full placeholder-gray-900 rounded-xl bg-white border border-gray-200 px-4 py-2 pl-8" name=""
                 id="">
@@ -56,14 +56,14 @@
                                 {{ $job->description }}
                             </div>
 
-                            <div class="flex items-center space-x-2 mt-4 justify-between">
-                                <div>
+                            <div class="flex flex-col md:flex-row md:items-center space-x-2 mt-4 justify-between">
+                                <div class="mb-2 md:mb-0">
                                     <span class="font-bold block">Salário</span>
                                     <span
                                         class="text-md text-orange-500">{{ $job->match == 1 ? 'A Combinar' : number_format($job->salary, 2, ',', '.') }}</span>
                                 </div>
                                 <a href="{{ route('app.jobitem', ["id" => $job->id]) }}"
-                                    class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
+                                    class="text-center bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                                     Ver informações da vaga
                                 </a>
                             </div>

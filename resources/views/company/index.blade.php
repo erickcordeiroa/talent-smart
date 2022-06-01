@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center flex-wrap">
         @if (!$candidates->isEmpty())
             @foreach ($candidates as $item)
-                <div class="w-49/5 bg-white border border-gray-100 rounded-xl py-4 px-6 mb-2">
+                <div class="w-full md:w-49/5 bg-white border border-gray-100 rounded-xl py-4 px-6 mb-2">
                     <div class="w-full flex items-center justify-between mb-4">
                         <div class="w-2/6 mr-4">
                             @if ($item->photo != null)
@@ -30,5 +30,9 @@
                     vários candidatos!</p>
             </div>
         @endif
+
+        <div class="my-8">
+            {{ $candidates->links() }}
+        </div>
     </div>
 </x-admin-layout>

@@ -45,18 +45,18 @@
                         placeholder="Ex: Registro-SP" value="{{ $experience->city }}">
                 </div>
 
-                <div class="form-group flex mb-6 items-center">
+                <div class="form-group flex-col md:flex-row flex mb-6 items-center">
                     {{-- Start --}}
-                    <div class="flex flex-col w-1/3 mr-2">
+                    <div class="flex flex-col w-full md:w-1/3 md:mr-2 mb-6 md:mb-0">
                         <label for="start" class="font-semibold mb-1">Data de início</label>
                         <input type="date" name="start" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ $experience->start }}">
                     </div>
                     {{-- End --}}
-                    <div class="flex flex-col w-1/3 mr-2">
+                    <div class="flex flex-col w-full md:w-1/3 md:mr-2 mb-6 md:mb-0">
                         <label for="end" class="font-semibold mb-1">Data de término</label>
                         <input type="date" name="end" class="rounded-md bg-gray-100 border border-gray-200 w-full" value="{{ $experience->end }}">
                     </div>
-                    <div class="flex w-1/3 form-check mt-6 pl-4">
+                    <div class="flex w-full md:w-1/3 form-check mt-6 md:pl-4">
                         <input
                             name="currently"
                             class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"

@@ -52,15 +52,15 @@
                         placeholder="Rua José da Silva, 120 - Centro" value="{{ $user->address }}">
                 </div>
 
-                <div class="form-group flex mb-6">
+                <div class="form-group flex flex-col md:flex-row mb-6">
                     {{-- City --}}
-                    <div class="flex flex-col w-1/2 pr-2">
+                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
                         <label for="city" class="font-semibold mb-1">Cidade</label>
                         <input type="text" name="city" class="rounded-md bg-gray-100 border border-gray-200 w-full"
                             placeholder="Registro" value="{{ $user->city }}">
                     </div>
                     {{-- State --}}
-                    <div class="flex flex-col w-1/2">
+                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
                         <label for="state" class="font-semibold mb-1">Estado</label>
                         <input type="text" name="state" class="rounded-md bg-gray-100 border border-gray-200 w-full"
                             placeholder="São Paulo" value="{{ $user->state }}">
@@ -69,13 +69,13 @@
 
 
                 {{-- Password --}}
-                <div class="form-group flex mb-6">
-                    <div class="flex flex-col w-1/2 pr-2">
+                <div class="form-group flex flex-col md:flex-row mb-6">
+                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
                         <label for="password" class="font-semibold mb-1">Senha</label>
                         <input type="password" name="password" class="rounded-md bg-gray-100 border border-gray-200"
                             placeholder="********">
                     </div>
-                    <div class="flex flex-col w-1/2">
+                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
                         <label for="password_confirmation" class="font-semibold mb-1">Confirmar Senha</label>
                         <input type="password" name="password_confirmation"
                             class="rounded-md bg-gray-100 border border-gray-200" placeholder="********">
@@ -83,14 +83,14 @@
                 </div>
                 <div>
                     {{-- Date of Birthday --}}
-                    <div class="mb-6 flex">
-                        <div class="flex flex-col w-1/2 pr-2">
+                    <div class="mb-6 flex flex-col md:flex-row">
+                        <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
                             <label for="dob" class="font-semibold mb-1">Data de Aniversario</label>
                             <input type="date" name="birthday" class="rounded-md bg-gray-100 border border-gray-200"
                                 value="{{ $user->birthday }}">
                         </div>
                         {{-- CPF/CNPJ --}}
-                        <div class="flex flex-col w-1/2">
+                        <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
                             <label for="cpf" class="font-semibold mb-1">CPF</label>
                             <input type="text" name="document" class="rounded-md bg-gray-100 border border-gray-200"
                                 placeholder="XXX.XXX.XXX-XX" value="{{ $user->document }}">

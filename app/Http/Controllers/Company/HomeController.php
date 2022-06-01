@@ -17,7 +17,7 @@ class HomeController extends Controller
 
 
         $candidates = User::where('account', 'candidate')
-            ->whereNotNull('profile')->get();
+            ->whereNotNull('profile')->paginate(12);
 
         return view('company.index', ['candidates' => $candidates]);
     }

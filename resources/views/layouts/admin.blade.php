@@ -22,7 +22,7 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
         <div class="w-full max-w-6xl mx-auto flex items-start justify-between py-2">
-            <div class="w-1/3 py-2 mx-2 shadow-blue-100">
+            <div class="hidden md:block w-1/3 py-2 mx-2 shadow-blue-100">
                 <!-- Section USER INFO -->
                 <div class="bg-white rounded-md border-gray-300 p-5 shadow-lg shadow-gray-200">
                     <div class="w-full flex items-center justify-between">
@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
-                            <a class="flex flex-row justify-between items-center" href="{{ route('app.jobs') }}">
+                            <a class="flex flex-row justify-between items-center" href="{{ route('company.jobs') }}">
                                 <span>Interessados </span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -78,7 +78,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="w-2/3 py-2 mx-2">
+            <div class="w-full md:w-2/3 py-2 md:mx-2 px-2 md:px-0">
                 <!-- Page Content -->
                 <main>
                     {{ $slot }}

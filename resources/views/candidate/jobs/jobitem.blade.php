@@ -1,5 +1,6 @@
 <x-app-layout>
-    <a href="{{ route('app.dash') }}" class="hover:underline flex items-center justify-between w-32 font-bold text-sm mb-4">
+    <a href="{{ route('app.dash') }}"
+        class="hover:underline flex items-center justify-between w-32 font-bold text-sm mb-4">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7">
             </path>
@@ -50,7 +51,8 @@
 
                     <div class="w-full flex flex-wrap justify-start items-center">
 
-                        <div class="{{ $job->transport ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                        <div
+                            class="{{ $job->transport ? 'flex' : 'hidden' }} w-full md:w-1/4 md:justify-betstartween items-center my-2">
                             <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -58,7 +60,8 @@
                             </svg>
                             Vale Transporte
                         </div>
-                        <div class="{{ $job->food ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                        <div
+                            class="{{ $job->food ? 'flex' : 'hidden' }} w-full md:w-1/4 md:justify-start items-center my-2">
                             <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -66,7 +69,8 @@
                             </svg>
                             Vale Refeição
                         </div>
-                        <div class="{{ $job->snack ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                        <div
+                            class="{{ $job->snack ? 'flex' : 'hidden' }} w-full md:w-1/4 md:justify-start items-center my-2">
                             <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -74,7 +78,8 @@
                             </svg>
                             Vale Alimentação
                         </div>
-                        <div class="{{ $job->health ? 'flex' : 'hidden' }} justify-between items-center my-2 mr-2">
+                        <div
+                            class="{{ $job->health ? 'flex' : 'hidden' }} w-full md:w-1/4 md:justify-start items-center my-2">
                             <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -95,7 +100,7 @@
                 </div>
 
                 {{-- Button Candidatar --}}
-                <div class="flex items-center mt-4 justify-end">
+                <div class="flex items-center mt-4 justify-center md:justify-end">
                     <a href="#"
                         class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                         Quero me candidatar a vaga
