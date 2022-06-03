@@ -109,9 +109,9 @@
                     Smart, são milhares de
                     empregos
                     nas maiores empresas do país.</p>
-                <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center max-w-md">
+                <div class="w-full flex flex-col md:flex-row md:justify-between items-start md:items-center md:max-w-md">
                     <a href="{{ route('register') }}"
-                        class="bg-blue-800 text-white mr-2 px-5 py-3 rounded-full font-bold mb-4 md:mb-0 w-full text-center">Comece
+                        class="bg-blue-800 text-white md:mr-2 px-5 py-3 rounded-full font-bold mb-4 md:mb-0 w-full text-center">Comece
                         agora mesmo</a>
                     <button
                         class="border-2 border-blue-800 text-blue-800 px-5 py-3 rounded-full font-bold w-full text-center">Conheça
