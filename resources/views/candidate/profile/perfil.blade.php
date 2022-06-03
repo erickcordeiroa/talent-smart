@@ -97,6 +97,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="mb-6">
+                    <label for="status" class="font-semibold mb-1 block">Habilitacao</label>
+                    <select name="status" class="rounded-md bg-gray-100 border border-gray-200 w-full">
+                        <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>A</option>
+                        <option value="2" {{ $user->status == 2 ? 'selected' : '' }}>A/B</option>
+                        <option value="3" {{ $user->status == 3 ? 'selected' : '' }}>C</option>
+                        <option value="4" {{ $user->status == 4 ? 'selected' : '' }}>D</option>
+                        <option value="5" {{ $user->status == 5 ? 'selected' : '' }}>E</option>
+                        <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Nenhuma</option>
+                        
+                    </select>
+                </div>
                 {{-- Status --}}
                 <div class="mb-6">
                     <label for="status" class="font-semibold mb-1 block">Status</label>
