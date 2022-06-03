@@ -47,7 +47,7 @@
     </div>
 
     <div x-data="{ isExperience: true, isEducation: false }">
-        <nav class="hidden md:flex items-center justify-between text-xs py-4">
+        <nav class=" md:flex items-center justify-between text-xs py-4">
             <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
                 <li @click="isExperience = true, isEducation = false">
                     <a href="#" class="border-b-4 pb-3 hover:border-blue-500"
