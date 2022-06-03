@@ -20,6 +20,7 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
 
     //Test Disc
     Route::get('/disc', [HomeController::class, 'disc'])->name('app.disc');
+    Route::post('/disc', [HomeController::class, 'define'])->name('app.define');
     Route::get('/vaga/{job:slug}', [HomeController::class, 'jobItem'])->name('app.jobitem');
 
     Route::get('/experiencias', [ExperiencesController::class, 'index'])->name('app.experiences');

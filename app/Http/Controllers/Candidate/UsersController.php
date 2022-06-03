@@ -27,7 +27,7 @@ class UsersController extends Controller
         $id = intval(Auth::id());
         $user = User::find($id);
 
-        $data = $request->only(['photo', 'name', 'email',
+        $data = $request->only(['photo', 'name', 'email', 'phone', 'license',
             'address', 'city', 'state', 'password', 'password_confirmation', 'birthday', 'document',
             'status', 'description']);
 
@@ -73,6 +73,8 @@ class UsersController extends Controller
         $user->address = $data['address'];
         $user->city = $data['city'];
         $user->state = $data['state'];
+        $user->license = $data['license'];
+        $user->phone = $data['phone'];
         $user->birthday = $data['birthday'];
         $user->document = $data['document'];
         $user->status = $data['status'];

@@ -69,7 +69,8 @@
         </div>
 
         <!--QUESTIONARIO-->
-        <form enctype="multipart/form-data" @submit.prevent="definedPerfil">
+        <form class="j_define_profile" enctype="multipart/form-data" method="post" action="{{ route('app.define') }}">
+            @csrf
             <div class="questions mt-5">
                 <!-- QUESTIONS ITEMS 1-->
                 <div class="questions-item pt-5 border-t-2 border-gray-100">
@@ -80,7 +81,7 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-1-a"
+                            <input type="number" name="question[1][a]"
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -91,7 +92,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-1-b"
+                            <input type="number" name="question[1][b]"
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -100,7 +101,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-1-c"
+                            <input type="number" name="question[1][c]"
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -110,7 +111,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-1-d"
+                            <input type="number" name="question[1][d]"
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -132,7 +133,7 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-2-a"
+                            <input type="number" name="question[2][a]"
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -141,7 +142,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-2-b"
+                            <input type="number" name="question[2][b]"
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -151,14 +152,14 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-2-c"
+                            <input type="number" name="question[2][c]"
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>C. Fico calado e aceito o prato que me trouxeram.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-2-d"
+                            <input type="number" name="question[2][d]"
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -175,7 +176,7 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-3-a"
+                            <input type="number" name="question[3][a]"
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -185,7 +186,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-3-b" required
+                            <input type="number" name="question[3][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -195,7 +196,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-3-c"
+                            <input type="number" name="question[3][c]"
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
@@ -205,7 +206,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-3-d" required
+                            <input type="number" name="question[3][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -225,29 +226,29 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-4-a" required
+                            <input type="number" name="question[4][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Tranquilo, Paciente, Amável.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-4-b"
+                            <input type="number" name="question[4][b]"
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>B. Social, Alegre, Gosta de Conversar.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-4-c"
+                            <input type="number" name="question[4][c]"
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>C. Enérgico, Forte, Agressivo.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-4-d" class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[4][d]"
+                                class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>D. Concreto, Disciplinado, Metódico.</div>
                     </div>
@@ -260,8 +261,8 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-5-a" class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[5][a]"
+                                class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
                             A. Trato de dizer que não é para tanto, pois discutir me
@@ -270,8 +271,8 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-5-b" class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[5][b]"
+                                class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
                             B. Busco ter a razão e não paro até que consiga. Gosto de
@@ -280,8 +281,8 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-5-c" class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[5][c]"
+                                class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
                             C. Odeio agressões, concordo com o que esta sendo dito para
@@ -290,8 +291,8 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-5-d" class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[5][d]"
+                                class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
                             D. Me baseio nos fatos e busco comprovar meu ponto de vista
@@ -310,29 +311,29 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-6-a" class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[6][a]"
+                                class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>A. Os desafios, As novidades, Arriscar.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-6-b" class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[6][b]"
+                                class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>B. As surpresas, A diversão, O jogo.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-6-c" class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[6][c]"
+                                class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>C. A doçura, O carinho, Aceitação</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-6-d" class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[6][d]"
+                                class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>D. Aprender, Sabedoria, Conhecimento</div>
                     </div>
@@ -345,15 +346,15 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-7-a" class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[7][a]"
+                                class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>A. Fico calado e não demonstro o que sinto.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-7-b" class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[7][b]"
+                                class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
                             B. Escapo da situação ou pergunto a outra pessoa se ela é
@@ -362,8 +363,8 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-7-c" class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[7][c]"
+                                class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
                             C. Devolvo a agressão pois necessito demonstrar minha
@@ -373,8 +374,8 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-7-d" class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[7][d]"
+                                class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" required min="1" max="4" />
                         </div>
                         <div>
                             D. Me angustio, me privo e me resguardo, porém tento
@@ -391,14 +392,14 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-8-a" required
+                            <input type="number" name="question[8][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Busco ofertas, os descontos me fascinam.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-8-b" required
+                            <input type="number" name="question[8][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -408,8 +409,9 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-8-c" class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6"
-                                required min="1" max="4" />
+                            <input type="number" name="question[8][c]"
+                                class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" required min="1"
+                                max="4" />
                         </div>
                         <div>
                             C. Sei o que quero e não gasto meu dinheiro se não encontro.
@@ -418,7 +420,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-8-d" required
+                            <input type="number" name="question[8][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -436,7 +438,7 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-9-a" required
+                            <input type="number" name="question[9][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -447,7 +449,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-9-b" required
+                            <input type="number" name="question[9][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -458,7 +460,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-9-c" required
+                            <input type="number" name="question[9][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -468,7 +470,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-9-d" required
+                            <input type="number" name="question[9][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -488,7 +490,7 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-10-a"
+                            <input type="number" required name="question[10][a]"
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -498,7 +500,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-10-b" required
+                            <input type="number" name="question[10][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -508,14 +510,14 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-10-c" required
+                            <input type="number" name="question[10][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. O que manda e organiza.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-10-d" required
+                            <input type="number" name="question[10][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -534,28 +536,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-11-a" required
+                            <input type="number" name="question[11][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Ser teimoso e quadrado</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-11-b" required
+                            <input type="number" name="question[11][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Ser agressivo e temperamental.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-11-c" required
+                            <input type="number" name="question[11][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Ser submisso e lento.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-11-d" required
+                            <input type="number" name="question[11][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Ser distraído e desorganizado.</div>
@@ -571,28 +573,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-12-a" required
+                            <input type="number" name="question[12][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Ser Determinado e seguro.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-12-b" required
+                            <input type="number" name="question[12][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Ser Adaptado e pacífico.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-12-c" required
+                            <input type="number" name="question[12][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Ser Otimista e alegre.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-12-d"
+                            <input type="number" required name="question[12][d]"
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Ser Cumpridor e estável</div>
@@ -608,7 +610,7 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-13-a"
+                            <input type="number" required name="question[13][a]"
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -617,14 +619,14 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-13-b" required
+                            <input type="number" name="question[13][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Dou um sorriso e sigo em frente.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-13-c" required
+                            <input type="number" name="question[13][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -634,7 +636,7 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-13-d" required
+                            <input type="number" name="question[13][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Peço que me desculpe e sigo em frente.</div>
@@ -650,28 +652,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-14-a" required
+                            <input type="number" name="question[14][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Na tomada de decisões rapidamente.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-14-b" required
+                            <input type="number" name="question[14][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Nas relações públicas</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-14-c" required
+                            <input type="number" name="question[14][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Na capacidade de me adaptar a equipes</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-14-d" required
+                            <input type="number" name="question[14][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Na segurança de ter qualidade e pontualidade.</div>
@@ -687,28 +689,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-15-a"
+                            <input type="number" required name="question[15][a]"
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Não gosto de delegar, prefiro trabalhar sozinho.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-15-b" required
+                            <input type="number" name="question[15][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Não gosto que me digam o que fazer.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-15-c" required
+                            <input type="number" name="question[15][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Trabalho mais sobre baixa pressão.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-15-d" required
+                            <input type="number" name="question[15][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Desordenado e esquecido e as vezes impontual.</div>
@@ -724,28 +726,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-16-a" required
+                            <input type="number" name="question[16][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Obediente e tranquilo.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-16-b" required
+                            <input type="number" name="question[16][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Mandão e exigente.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-16-c" required
+                            <input type="number" name="question[16][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Alegre e conversava com todo mundo.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-16-d" required
+                            <input type="number" name="question[16][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Bem arrumado e eu não gostava de me sujar.</div>
@@ -759,28 +761,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-17-a" required
+                            <input type="number" name="question[17][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Falo as coisas de maneira diplomática.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-17-b" required
+                            <input type="number" name="question[17][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Quase não expresso o que sinto.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-17-c" required
+                            <input type="number" name="question[17][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Falo de maneira indireta para não magoar.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-17-d" required
+                            <input type="number" name="question[17][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Falo as coisas como são.</div>
@@ -796,28 +798,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-18-a" required
+                            <input type="number" name="question[18][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Medo.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-18-b" required
+                            <input type="number" name="question[18][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Otimismo</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-18-c"
+                            <input type="number" required name="question[18][c]"
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Não demonstro emoção.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-18-d" required
+                            <input type="number" name="question[18][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Irritação.</div>
@@ -833,7 +835,7 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-19-a" required
+                            <input type="number" name="question[19][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>
@@ -842,21 +844,21 @@
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-19-b" required
+                            <input type="number" name="question[19][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Bom estudante e bastante analítico.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-19-c" required
+                            <input type="number" name="question[19][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Não interrompia e ficava calado.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-19-d" required
+                            <input type="number" name="question[19][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Era muito amigável e gostava de conversar.</div>
@@ -872,28 +874,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-20-a" required
+                            <input type="number" name="question[20][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Auto-suficiente e ambicioso.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-20-b" required
+                            <input type="number" name="question[20][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Preciso e exato.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-20-c"
+                            <input type="number" required name="question[20][c]"
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Cooperativo e adaptável.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-20-d"
+                            <input type="number" required name="question[20][d]"
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Despreocupado e popular.</div>
@@ -909,28 +911,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-21-a" required
+                            <input type="number" name="question[21][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Reservado e educado.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-21-b" required
+                            <input type="number" name="question[21][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Amigo e conversador.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-21-c" required
+                            <input type="number" name="question[21][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Tolerante e flexível.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-21-d" required
+                            <input type="number" name="question[21][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Valente e ousado.</div>
@@ -946,28 +948,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-22-a" required
+                            <input type="number" name="question[22][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Obstinado, determinação para me defender.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-22-b" required
+                            <input type="number" name="question[22][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Confiante, acredito nas pessoas.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-22-c" required
+                            <input type="number" name="question[22][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Prudente, gosto de refletir bem sobre as coisas.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-22-d" required
+                            <input type="number" name="question[22][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Pronto a servir, gosto de ajudar aos demais.</div>
@@ -983,28 +985,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-23-a" required
+                            <input type="number" name="question[23][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Brincalhão, chama a atenção das pessoas.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-23-b" required
+                            <input type="number" name="question[23][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Empreendedor, força de vontade.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-23-c" required
+                            <input type="number" name="question[23][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Generoso, se adapta aos demais.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-23-d" required
+                            <input type="number" name="question[23][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Cuidadoso, cautela ao tomar decisões.</div>
@@ -1020,28 +1022,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-24-a" required
+                            <input type="number" name="question[24][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Calmo, faz o que te pedem.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-24-b" required
+                            <input type="number" name="question[24][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Envolvente, motiva aos demais.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-24-c" required
+                            <input type="number" name="question[24][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Atrevido, crê em si próprio.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-24-d" required
+                            <input type="number" name="question[24][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Disciplinado, organizado e limpo.</div>
@@ -1057,28 +1059,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-25-a" required
+                            <input type="number" name="question[25][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Culto, busca ter conhecimento.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-25-b" required
+                            <input type="number" name="question[25][b]" required
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Animado, alma da festa.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-25-c" required
+                            <input type="number" name="question[25][c]" required
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Harmonioso, aberto a sugestões.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-25-d" required
+                            <input type="number" name="question[25][d]" required
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Confrontante, gosta de argumentar.</div>
@@ -1094,28 +1096,28 @@
 
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" name="question-26-a" required
+                            <input type="number" name="question[26][a]" required
                                 class="questions-a w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>A. Humilde, compassivo (condolente) com as pessoas.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-26-b"
+                            <input type="number" required name="question[26][b]"
                                 class="questions-b w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>B. Carismático, atrai as pessoas, desinibido.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-26-c"
+                            <input type="number" required name="question[26][c]"
                                 class="questions-c w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>C. Tem atitude, persuasivo, convincente.</div>
                     </div>
                     <div class="my-2 flex items-center">
                         <div>
-                            <input type="number" required name="question-26-d"
+                            <input type="number" required name="question[26][d]"
                                 class="questions-d w-18 h-8 rounded-md border-gray-300 mr-6" min="1" max="4" />
                         </div>
                         <div>D. Sistemático, cético, precavido.</div>

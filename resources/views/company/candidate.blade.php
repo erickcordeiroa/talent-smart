@@ -9,8 +9,8 @@
     </a>
 
     <div class="w-full bg-white border border-gray-100 rounded-xl py-4 px-6 mb-2">
-        <div class="w-full flex items-center justify-between mb-4">
-            <div class="w-32 mr-4">
+        <div class="w-full text-center md:text-left flex flex-col md:flex-row items-center justify-between mb-4">
+            <div class="md:w-32 md:mr-4 mb-2 md:mb-0">
                 @if ($user->photo != null)
                     <img class="w-24 rounded-full object-cover" src="{{ asset('storage/' . $user->photo) }}"
                         alt="{{ $user->name }}" />
@@ -19,7 +19,7 @@
                         alt="{{ $user->name }}">
                 @endif
             </div>
-            <div class="w-1/2">
+            <div class="w-1/2 mb-4 md:mb-0">
                 <div class="mb-2">
                     <h2 class="text-md font-bold">{{ $user->name }}</h2>
                     <h5 class="text-md font-normal text-orange-500">{{ $user->profile }}</h5>
@@ -33,7 +33,7 @@
             <div class="w-1/2">
                 <div>
                     <span class="text-sm">Carteira Motorista</span>
-                    <h2 class="text-md font-bold mb-4">A/B</h2>
+                    <h2 class="text-md font-bold mb-4">{{ $user->license }}</h2>
                 </div>
                 <div>
                     <span class="text-sm">Telefone</span>
@@ -47,7 +47,14 @@
     </div>
 
     <div x-data="{ isExperience: true, isEducation: false }">
-        <nav class=" md:flex items-center justify-between text-xs py-4">
+        <nav class="flex-col md:flex-row md:flex items-center justify-between text-xs py-4">
+
+            <ul class="md:hidden block mb-10 md:mb-0">
+                <li><a href="#"
+                        class="block text-center hover:bg-blue-900 rounded-xl px-10 py-3 bg-blue-800 text-white font-bold text-md">Selecionar
+                        Candidato</a></li>
+            </ul>
+
             <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
                 <li @click="isExperience = true, isEducation = false">
                     <a href="#" class="border-b-4 pb-3 hover:border-blue-500"
@@ -57,6 +64,12 @@
                     <a href="#" :class="isEducation ? 'border-blue-500' : ''"
                         class="transition duration-500 ease-in border-b-4 pb-3 hover:border-blue-500 ">Cursos</a>
                 </li>
+            </ul>
+
+            <ul class="hidden md:block mb-10 md:mb-0">
+                <li><a href="#"
+                        class="block text-center hover:bg-blue-900 rounded-xl px-10 py-3 bg-blue-800 text-white font-bold text-md">Selecionar
+                        Candidato</a></li>
             </ul>
         </nav>
 

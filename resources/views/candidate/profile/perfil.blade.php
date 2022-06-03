@@ -97,17 +97,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-6">
-                    <label for="status" class="font-semibold mb-1 block">Habilitacao</label>
-                    <select name="status" class="rounded-md bg-gray-100 border border-gray-200 w-full">
-                        <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>A</option>
-                        <option value="2" {{ $user->status == 2 ? 'selected' : '' }}>A/B</option>
-                        <option value="3" {{ $user->status == 3 ? 'selected' : '' }}>C</option>
-                        <option value="4" {{ $user->status == 4 ? 'selected' : '' }}>D</option>
-                        <option value="5" {{ $user->status == 5 ? 'selected' : '' }}>E</option>
-                        <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Nenhuma</option>
-                        
-                    </select>
+                <div class="mb-6 flex flex-col md:flex-row">
+                    {{-- License --}}
+                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
+                        <label for="license" class="font-semibold mb-1 block">Habilitação</label>
+                        <select name="license" class="rounded-md bg-gray-100 border border-gray-200 w-full">
+                            <option value="A" {{ $user->license == 'A' ? 'selected' : '' }}>A</option>
+                            <option value="A/B" {{ $user->license == 'A/B' ? 'selected' : '' }}>A/B</option>
+                            <option value="B" {{ $user->license == 'B' ? 'selected' : '' }}>B</option>
+                            <option value="C" {{ $user->license == 'C' ? 'selected' : '' }}>C</option>
+                            <option value="D" {{ $user->license == 'D' ? 'selected' : '' }}>D</option>
+                            <option value="E" {{ $user->license == 'E' ? 'selected' : '' }}>E</option>
+                            <option value="N" {{ $user->license == 'N' ? 'selected' : '' }}>Nenhuma</option>
+                        </select>
+                    </div>
+                    {{-- Phone --}}
+                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
+                        <label for="phone" class="font-semibold mb-1">Telefone/Celular</label>
+                        <input type="text" name="phone" class="rounded-md bg-gray-100 border border-gray-200"
+                            placeholder="XX XXXXX-XXXX" value="{{ $user->phone }}" maxlength="11">
+                    </div>
                 </div>
                 {{-- Status --}}
                 <div class="mb-6">
