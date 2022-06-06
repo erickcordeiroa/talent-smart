@@ -1,11 +1,12 @@
 <x-app-layout>
-    <a href="{{ route('app.dash') }}"
+    <a href="{{ (Request::query('view') != 'view')? route('app.dash') : route('app.jobs') }}"
         class="hover:underline flex items-center justify-between w-32 font-bold text-sm mb-4">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7">
             </path>
         </svg>
-        <span class="block">Todas as Vagas</span>
+        <span class="block">
+            {{ (Request::query('view') != 'view')? 'Todas as Vagas' : 'Minhas vagas' }}</span>
     </a>
     <div class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex">
         <div class="flex flex-1 px-2 py-6">
@@ -100,12 +101,18 @@
                 </div>
 
                 {{-- Button Candidatar --}}
+                @if(Request::query('view') != 'view')
                 <div class="flex items-center mt-4 justify-center md:justify-end">
-                    <a href="#"
+                    <form action="{{ route('app.link') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="job" value="{{ $job->id }}">
+                    <button type="submit"
                         class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
                         Quero me candidatar a vaga
-                    </a>
+                    </button>
+                    </form>
                 </div>
+                @endif
 
             </div>
         </div>

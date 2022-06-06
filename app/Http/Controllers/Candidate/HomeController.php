@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Candidate;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidate\UserJob;
 use App\Models\Category;
 use App\Models\Company\Job;
 use App\Models\User;
@@ -38,6 +39,49 @@ class HomeController extends Controller
         return view('candidate.jobs.jobitem', ["job" => $job]);
     }
 
+    public function storeUserJob(Request $request)
+    {
+        $store = new UserJob();
+        $store->user_id = Auth::user()->id;
+        $store->job_id = $request->job;
+
+        if (!$store->save()) {
+            return redirect()->route('app.dash')
+                ->with('error', 'Ooops... No momento não estamos conseguindo fazer o seu cadastro nesta vaga, tente novamente mais tarde!');
+        }
+
+        return redirect()->route('app.dash')
+            ->with('success', 'Yeaah! Sua candidatura para a vaga foi realizada com sucesso, veja suas todas as suas candidaturas em "Minhas Vagas"');
+    }
+
+    //My Jobs
+    public function myJobs()
+    {
+        $interested = UserJob::with('jobs')->where('user_id', Auth::user()->id)->paginate(10);
+        return view('candidate.jobs.list', [
+            'interested' => $interested
+        ]);
+    }
+
+    public function destroyUserJob($id){
+        $autenticateId = Auth::user()->id;
+        $userJob = UserJob::find($id);
+
+
+
+        if ($userJob->user_id != $autenticateId) {
+            return redirect()->route('app.jobs')
+                ->with('error', 'O registro que desejou excluir não exite, tente novamente mais tarde!');
+        }
+
+        $userJob->delete();
+
+        return redirect()->route('app.jobs')
+            ->with('success', 'A vaga que você se candidatou já foi desvinculada ao seu perfil!');
+    }
+
+
+    //Teste de Perfil
     public function disc()
     {
         return view('candidate.disc');

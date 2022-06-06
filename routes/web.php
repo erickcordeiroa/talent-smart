@@ -40,9 +40,9 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/perfil', [UsersController::class, 'index'])->name('app.perfil');
     Route::post('/profile', [UsersController::class, 'update'])->name('app.update.perfil');
 
-    Route::get('/minhas-vagas', function(){
-        return view('candidate.jobs.list');
-    })->name('app.jobs');
+    Route::get('/minhas-vagas', [HomeController::class, 'myJobs'])->name('app.jobs');
+    Route::post('/minhas-vagas/vincular', [HomeController::class, 'storeUserJob'])->name('app.link');
+    Route::delete('/minhas-vagas/deletar/{id}', [HomeController::class, 'destroyUserJob'])->name('app.jobitem.destroy');
 });
 
 

@@ -1,4 +1,22 @@
 <x-app-layout>
+    @if ($errors->any())
+        <div class="w-full mb-4 rounded-lg border border-red-500 bg-red-400 p-3 text-white">
+            <h5 class="text-white font-bold text-3xl mb-2">Atenção!</h5>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="w-full mb-4 rounded-lg border border-green-500 bg-green-400 p-3 text-white">
+            <h5 class="text-white font-bold text-3xl mb-2">Sucesso!</h5>
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="filters flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0">
         <div class="md:w-1/3 w-full">
             <select name="category" id="category" class="w-full rounded-xl px-4 py-2 border border-gray-200">
