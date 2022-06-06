@@ -113,7 +113,7 @@
                     </div>
                     {{-- Phone --}}
                     <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
-                        <label for="phone" class="font-semibold mb-1">Telefone/Celular</label>
+                        <label for="phone" class="font-semibold mb-1">Celular</label>
                         <input type="text" name="phone" class="rounded-md bg-gray-100 border border-gray-200"
                             placeholder="XX XXXXX-XXXX" value="{{ $user->phone }}" maxlength="11">
                     </div>
