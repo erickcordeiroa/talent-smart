@@ -20,7 +20,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+        @include('layouts.navigation', ['notifications' => $notifications, 'countNotify' => $countNotify])
 
         <div class="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between py-2">
             <div class="w-full md:w-1/3 py-2 mx-2 shadow-blue-100 hidden md:block">

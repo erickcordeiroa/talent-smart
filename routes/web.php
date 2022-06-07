@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('app.dash');
 
+    Route::get('/notification', [HomeController::class, 'viewNotify'])->name('app.view.notification');
+
     //Test Disc
     Route::get('/disc', [HomeController::class, 'disc'])->name('app.disc');
     Route::post('/disc', [HomeController::class, 'define'])->name('app.define');

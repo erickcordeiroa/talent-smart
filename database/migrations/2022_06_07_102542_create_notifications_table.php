@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserJobsTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateUserJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_jobs', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users', 'id')->onDelete('cascade');
-            $table->foreignId('job_id')->constrained('jobs', 'id')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users', 'id');
+            $table->foreignId('job_id')->constrained('jobs', 'id');
+            $table->string('status');
+            $table->boolean('view')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateUserJobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_jobs');
+        Schema::dropIfExists('notifications');
     }
 }

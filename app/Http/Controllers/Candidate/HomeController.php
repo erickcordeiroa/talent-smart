@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Candidate\UserJob;
 use App\Models\Category;
 use App\Models\Company\Job;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -124,5 +125,17 @@ class HomeController extends Controller
         $user->save();
 
         return redirect()->route('app.dash');
+    }
+
+    public function viewNotify()
+    {
+        $notify = Notification::where('user_id', Auth::user()->id)->get();
+
+        foreach($notify as $item){
+            $item->view = 1;
+            $item->save();
+        }
+
+        return true;
     }
 }
