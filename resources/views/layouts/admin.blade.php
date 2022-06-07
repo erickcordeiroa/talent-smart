@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
-                            <a class="flex flex-row justify-between items-center" href="{{ route('company.jobs') }}">
+                            <a class="flex flex-row justify-between items-center" href="{{ route('company.interested') }}">
                                 <span>Interessados </span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

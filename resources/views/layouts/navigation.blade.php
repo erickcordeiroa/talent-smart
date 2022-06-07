@@ -17,7 +17,14 @@
                     {{-- Notifications --}}
                     <x-dropdown align="right" width="w-72">
                         <x-slot name="trigger">
-                            <div>
+                            <div x-data="{ show: true }" @click="
+                                fetch('{{ route('app.view.notification') }}', {
+                                method: 'get',
+                                }).then(response => {
+                                    return;
+                                }),
+                                show = false
+                            ">
                                 <button class="bell text-gray-500 relative w-7">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -25,8 +32,8 @@
                                         </path>
                                     </svg>
                                     @if ($countNotify != 0)
-                                        <span
-                                            class="block z-10 absolute top-0 w-10 h-10 rounded-full text-red-600 text-3xl left-0">
+                                        <span x-show="show"
+                                            class="bollet block z-10 absolute top-0 w-10 h-10 rounded-full text-red-600 text-3xl left-0">
                                             &bull;
                                         </span>
                                     @endif

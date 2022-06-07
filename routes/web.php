@@ -53,7 +53,11 @@ Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
     Route::get('/', [CompanyHomeController::class, 'index'])->name('company.dash');
 
     //Infos Candidate
-    Route::get('candidato/{user:slug}', [CompanyHomeController::class, 'show'])->name('company.user');
+    Route::get('/candidato/{user:slug}', [CompanyHomeController::class, 'show'])->name('company.user');
+
+    //Interested
+    Route::get('/interessados', [CompanyHomeController::class, 'interested'])->name('company.interested');
+    Route::delete('/interessados/{id}', [CompanyHomeController::class, 'interestedDestroy'])->name('company.interested.destroy');
 
     //Jobs
     Route::get('/jobs', [JobsController::class, 'index'])->name('company.jobs');
