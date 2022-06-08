@@ -29,7 +29,8 @@
                     <div class="w-full flex items-center justify-between">
                         <div class="w-2/6 mr-4">
                             @if (Auth::user()->photo != null)
-                                <img class="w-24 rounded-full object-cover" src="{{ asset('storage/'.Auth::user()->photo); }}"
+                                <img class="w-24 rounded-full object-cover"
+                                    src="{{ asset('storage/' . Auth::user()->photo) }}"
                                     alt="{{ Auth::user()->name }}" />
                             @else
                                 <img class="inline rounded-full" src="{{ asset('img/default-user.png') }}"
@@ -49,10 +50,13 @@
                 <!-- LINKS MENU -->
                 <div class="bg-white rounded-md border-gray-300 p-5 mt-4">
                     <ul class="w-full">
-                        <li class="p-3 border-b border-gray-100"><a class="hover:underline" href="{{ route('app.jobs') }}">Minhas Vagas</a></li>
-                        <li class="p-3 border-b border-gray-100"><a class="hover:underline" href="{{ route('app.experiences') }}">Minhas
+                        <li class="p-3 border-b border-gray-100"><a class="hover:underline"
+                                href="{{ route('app.jobs') }}">Minhas Vagas</a></li>
+                        <li class="p-3 border-b border-gray-100"><a class="hover:underline"
+                                href="{{ route('app.experiences') }}">Minhas
                                 Experiências</a></li>
-                        <li class="p-3 border-gray-100"><a class="hover:underline" href="{{ route('app.educations') }}">Meus Cursos</a></li>
+                        <li class="p-3 border-gray-100"><a class="hover:underline"
+                                href="{{ route('app.educations') }}">Meus Cursos</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,7 +68,6 @@
             </div>
         </div>
     </div>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>

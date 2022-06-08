@@ -14,17 +14,26 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        $profile = $request->input('profile', 'All');
+
         if (Auth::user()->fantasy == null) {
             return redirect()->route('company.profile');
         }
 
-
         $candidates = User::where('account', 'candidate')
-            ->whereNotNull('profile')->paginate(12);
+            ->whereNotNull('profile')
+            ->when($profile && $profile !== "All", function ($query) use ($profile){
+                return $query->where('profile', $profile);
+            })
+            ->paginate(12);
 
-        return view('company.index', ['candidates' => $candidates]);
+        return view('company.index', [
+            'candidates' => $candidates, 
+            'profile' => $profile
+        ]);
     }
 
     public function show(User $user)

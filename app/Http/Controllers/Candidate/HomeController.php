@@ -14,24 +14,30 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (Auth::user()->profile == null) {
             return redirect()->route('app.disc');
         }
+
+        $category = intval($request->input('category', 'All'));
 
         $jobs = DB::table('jobs')
             ->join('users', 'jobs.user_id', '=', 'users.id')
             ->join('categories', 'jobs.category_id', '=', 'categories.id')
             ->leftJoin('user_jobs', 'jobs.id', '=', 'user_jobs.job_id')
             ->select('jobs.*', 'users.fantasy', 'users.photo', 'categories.title as categories')
-            ->where('user_jobs.user_id', '<>', Auth::user()->id)
+            ->where('user_jobs.user_id', '<>', auth()->id())
             ->orWhereNull('user_jobs.id')
+            ->when($category && $category !== "All", function ($query) use ($category){
+                return $query->where('jobs.category_id', $category);
+            })
             ->paginate(10);
 
         return view('candidate.index', [
             'jobs' => $jobs,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'category' => $category
         ]);
     }
 
