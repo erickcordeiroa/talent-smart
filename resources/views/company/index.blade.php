@@ -22,7 +22,7 @@
                         <div class="w-2/6 mr-4">
                             @if ($item->photo != null)
                                 <img class="w-24 rounded-full object-cover"
-                                    src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}" />
+                                    src="{{ url('media/avatars/' . $item->photo) }}" alt="{{ $item->name }}" />
                             @else
                                 <img class="inline rounded-full" src="{{ asset('img/default-user.png') }}"
                                     alt="{{ $item->name }}">

@@ -25,7 +25,7 @@
                 {{-- Company Job --}}
                 <div class="mt-4 flex items-center">
                     <div class="mr-4">
-                        <img src="{{ asset('storage/' . $job->users->photo) }}" alt="avatar"
+                        <img src="{{ url('media/avatars/' . $job->users->photo) }}" alt="avatar"
                             class="w-12 h-12 rounded-full">
                     </div>
                     <div>

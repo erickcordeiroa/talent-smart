@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
+use Intervention\Image\Facades\Image;
+
 class UserController extends Controller
 {
     public function index()
@@ -43,12 +45,14 @@ class UserController extends Controller
         //Verify Exists Image
         if ($request->hasFile('photo')) {
 
-            if (Storage::exists($user->photo)) {
-                Storage::delete($user->photo);
-            }
+            $dest = public_path('/media/avatars');
+            $imgName = md5(time().rand(0,9999)).'.jpg';
 
-            $photo = $request->photo->store('users');
-            $user->photo = $photo;
+            $avatar = $request->file('photo');
+            $img = Image::make($avatar->getRealPath());
+            $img->fit(300,300)->save($dest.'/'.$imgName);
+
+            $user->photo = $imgName;
         }
 
         $user->name = $data['name'];

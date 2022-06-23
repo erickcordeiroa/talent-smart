@@ -84,7 +84,7 @@
                             <div class="mr-4">
                                 @if (Auth::user()->photo != null)
                                     <img class="w-10 rounded-full object-cover"
-                                        src="{{ asset('storage/' . Auth::user()->photo) }}"
+                                        src="{{ url('/media/avatars/' . Auth::user()->photo) }}"
                                         alt="{{ Auth::user()->name }}" />
                                 @else
                                     <img class="w-10 inline rounded-full" src="{{ asset('img/default-user.png') }}"

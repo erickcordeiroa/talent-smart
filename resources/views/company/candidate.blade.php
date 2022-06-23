@@ -12,7 +12,7 @@
         <div class="w-full text-center md:text-left flex flex-col md:flex-row items-center justify-between mb-4">
             <div class="md:w-32 md:mr-4 mb-2 md:mb-0">
                 @if ($user->photo != null)
-                    <img class="w-24 rounded-full object-cover" src="{{ asset('storage/' . $user->photo) }}"
+                    <img class="w-24 rounded-full object-cover" src="{{ url('media/avatars/' . $user->photo) }}"
                         alt="{{ $user->name }}" />
                 @else
                     <img class="inline rounded-full" src="{{ asset('img/default-user.png') }}"

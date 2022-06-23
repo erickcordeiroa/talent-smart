@@ -29,7 +29,7 @@
                         <div class="w-2/6 mr-4">
                             @if (Auth::user()->photo != null)
                                 <img class="w-24 rounded-full object-cover"
-                                    src="{{ asset('storage/' . Auth::user()->photo) }}"
+                                    src="{{ url('media/avatars/'. Auth::user()->photo) }}"
                                     alt="{{ Auth::user()->name }}" />
                             @else
                                 <img class="inline rounded-full" src="{{ asset('img/default-user.png') }}"

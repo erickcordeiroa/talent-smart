@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Intervention\Image\ImageServiceProvider::class,
+
 
         /*
          * Application Service Providers...

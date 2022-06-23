@@ -34,10 +34,10 @@
 
                 <div class="hidden md:block space-x-6">
                     <ul class="flex items-center space-x-8">
-                        <li><a href="#">Início</a></li>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Depoimentos</a></li>
+                        <li><a href="/">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
                     </ul>
                 </div>
                 <div class="space-x-6">
@@ -111,10 +111,10 @@
                     nas maiores empresas do país.</p>
                 <div class="w-full flex flex-col md:flex-row md:justify-between items-start md:items-center md:max-w-md">
                     <a href="{{ route('register') }}"
-                        class="bg-blue-800 text-white md:mr-2 px-5 py-3 rounded-full font-bold mb-4 md:mb-0 w-full text-center">Comece
+                        class="bg-blue-800 text-white  md:mr-2 px-5 py-3 rounded-full font-bold mb-4 md:mb-0 w-full text-center">Comece
                         agora mesmo</a>
                     <button
-                        class="border-2 border-blue-800 text-blue-800 px-5 py-3 rounded-full font-bold w-full text-center">Conheça
+                        class="border-2 border-blue-800 text-blue-800 hover:bg-blue-900 hover:text-white px-4 py-3 rounded-full font-semibold w-full text-center">Conheça
                         nosso trabalho</button>
                 </div>
             </div>
