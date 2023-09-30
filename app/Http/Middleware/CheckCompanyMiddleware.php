@@ -19,7 +19,7 @@ class CheckCompanyMiddleware
     {
         $user = Auth::user();
 
-        if($user->account != 'company'){
+        if($user->admin != '1'){
             return redirect()->route('app.dash');
         }
 

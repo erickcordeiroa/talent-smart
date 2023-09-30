@@ -5,6 +5,7 @@ use App\Http\Controllers\Candidate\ExperiencesController;
 use App\Http\Controllers\Candidate\EducationsController;
 use App\Http\Controllers\Candidate\HomeController;
 use App\Http\Controllers\Candidate\UsersController;
+use App\Http\Controllers\Company\ClientsController;
 use App\Http\Controllers\Company\HomeController as CompanyHomeController;
 use App\Http\Controllers\Company\JobsController;
 use App\Http\Controllers\Company\UserController as CompanyUserController;
@@ -66,6 +67,15 @@ Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
     Route::get('/jobs/editar/{job}', [JobsController::class, 'edit'])->name('company.edit.jobs');
     Route::put('/jobs/editar/{job}', [JobsController::class, 'update'])->name('company.update.jobs');
     Route::delete('/job/{id}', [JobsController::class, 'destroy'])->name('company.destroy.jobs');
+
+    //Clients
+    Route::get('/clientes', [ClientsController::class, 'index'])->name('company.clients');
+    Route::get('/cliente/novo', [ClientsController::class, 'create'])->name('company.create.clients');
+    Route::post('/cliente/novo', [ClientsController::class, 'store'])->name('company.store.clients');
+    Route::get('/cliente/editar/{client}', [ClientsController::class, 'edit'])->name('company.edit.clients');
+    Route::put('/cliente/editar/{client}', [ClientsController::class, 'update'])->name('company.update.clients');
+    Route::delete('/cliente/{id}', [ClientsController::class, 'destroy'])->name('company.destroy.clients');
+
 
     //Profile
     Route::get('/perfil', [CompanyUserController::class, 'index'])->name('company.profile');
