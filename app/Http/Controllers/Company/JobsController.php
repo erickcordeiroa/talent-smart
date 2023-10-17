@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Company\Client;
 use App\Models\Company\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class JobsController extends Controller
     public function index()
     {
         return view('company.jobs.index', [
-            'jobs' => Job::with('categories')->where('user_id', Auth::user()->id)->paginate(10)
+            'jobs' => Job::with(['categories', 'clients'])->paginate(10)
         ]);
     }
 
@@ -31,7 +32,8 @@ class JobsController extends Controller
     public function create()
     {
         return view('company.jobs.create', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'clients' => Client::all(),
         ]);
     }
 
@@ -45,13 +47,14 @@ class JobsController extends Controller
     {
 
         $data = $request->only([
-            'title', 'category_id', 'city', 'salary', 'match', 'transport',
+            'title', 'client_id', 'category_id', 'city', 'salary', 'match', 'transport',
             'snack', 'food', 'health', 'description', 'tags'
         ]);
 
         $validator = Validator::make($data, [
             'title' => ['required', 'string', 'min:3', 'max:255'],
             'category_id' => ['required', 'integer'],
+            'client_id' => ['required', 'integer'],
             'city' => ['required', 'string'],
             'salary' => ['required', 'between:0,99.99'],
             'description' => ['string', 'max:500'],
@@ -64,8 +67,8 @@ class JobsController extends Controller
         }
 
         $job = new Job();
-        $job->user_id = Auth::user()->id;
         $job->category_id = $data['category_id'];
+        $job->client_id = $data['client_id'];
         $job->title = $data['title'];
         $job->city = $data['city'];
         $job->salary = $data['salary'];
@@ -103,7 +106,8 @@ class JobsController extends Controller
     {
         return view('company.jobs.edit', [
             "job" => $job,
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            'clients' => Client::all(),
         ]);
     }
 
@@ -117,13 +121,14 @@ class JobsController extends Controller
     public function update(Request $request, Job $job)
     {
         $data = $request->only([
-            'title', 'category_id', 'city', 'salary', 'match', 'transport',
+            'title', 'client_id', 'category_id', 'city', 'salary', 'match', 'transport',
             'snack', 'food', 'health', 'description', 'tags'
         ]);
 
         $validator = Validator::make($data, [
             'title' => ['required', 'string', 'min:3', 'max:255'],
             'category_id' => ['required', 'integer'],
+            'client_id' => ['required', 'integer'],
             'city' => ['required', 'string'],
             'salary' => ['required', 'between:0,99.99'],
             'description' => ['string', 'max:500'],
@@ -136,7 +141,7 @@ class JobsController extends Controller
         }
 
         $job = Job::find($job->id);
-        $job->user_id = Auth::user()->id;
+        $job->client_id = $data['client_id'];
         $job->category_id = $data['category_id'];
         $job->title = $data['title'];
         $job->city = $data['city'];

@@ -16,4 +16,9 @@ class Client extends Model
         'email',
         'cover',
     ];
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class, 'client_id', 'id');
+    }
 }

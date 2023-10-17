@@ -1,7 +1,7 @@
 <x-app-layout>
     @if ($errors->any())
-        <div class="w-full mb-4 rounded-lg border border-red-500 bg-red-400 p-3 text-white">
-            <h5 class="text-white font-bold text-3xl mb-2">Atenção!</h5>
+        <div class="w-full p-3 mb-4 text-white bg-red-400 border border-red-500 rounded-lg">
+            <h5 class="mb-2 text-3xl font-bold text-white">Atenção!</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -11,16 +11,16 @@
     @endif
 
     @if (session('success'))
-        <div class="w-full mb-4 rounded-lg border border-green-500 bg-green-400 p-3 text-white">
-            <h5 class="text-white font-bold text-3xl mb-2">Sucesso!</h5>
+        <div class="w-full p-3 mb-4 text-white bg-green-400 border border-green-500 rounded-lg">
+            <h5 class="mb-2 text-3xl font-bold text-white">Sucesso!</h5>
             {{ session('success') }}
         </div>
     @endif
     @if (!$interested->isEmpty())
         @foreach ($interested as $item)
-            <div class="list-of-jobs-container bg-white border-transparent rounded p-4 mb-4">
-                <div class="header mb-4">
-                    <h1 class="title text-slate-900 font-semibold text-2xl">{{ $item->jobs->title }}</h1>
+            <div class="p-4 mb-4 bg-white border-transparent rounded list-of-jobs-container">
+                <div class="mb-4 header">
+                    <h1 class="text-2xl font-semibold title text-slate-900">{{ $item->jobs->title }}</h1>
                 </div>
                 <hr>
                 <div class="my-4">
@@ -31,18 +31,17 @@
                 </div>
 
                 <hr>
-                <div class="info p-4 flex justify-between items-center">
+                <div class="flex items-center justify-between p-4 info">
                     <div class="salary">
-                        <span class="font-bold block">Salário</span>
+                        <span class="block font-bold">Salário</span>
                         <span
-                            class="text-md text-orange-500">{{ $item->jobs->match == 1 ? 'A Combinar' : number_format($item->jobs->salary, 2, ',', '.') }}</span>
+                            class="text-orange-500 text-md">{{ $item->jobs->match == 1 ? 'A Combinar' : number_format($item->jobs->salary, 2, ',', '.') }}</span>
                     </div>
 
-                    <div class="flex justify-between items-center">
-                        <div class="view-button mr-3">
+                    <div class="flex items-center justify-between">
+                        <div class="mr-3 view-button">
                             <a href="{{ route('app.jobitem', ['job' => $item->jobs->slug, 'view' => 'view']) }}"
-                                class="flex justify-between items-center p-2 font-semibold bg-blue-500 
-                            hover:bg-blue-900 text-sm text-white rounded-md transition duration-150 ease-in">
+                                class="flex items-center justify-between p-2 text-sm font-semibold text-white transition duration-150 ease-in bg-blue-500 rounded-md hover:bg-blue-900">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -60,8 +59,7 @@
                                 @method('DELETE')
 
                                 <button type="submit"
-                                    class="flex justify-between items-center p-2 font-semibold bg-red-700 
-                            hover:bg-red-900 text-sm text-white rounded-md transition duration-150 ease-in">
+                                    class="flex items-center justify-between p-2 text-sm font-semibold text-white transition duration-150 ease-in bg-red-700 rounded-md hover:bg-red-900">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
@@ -76,8 +74,8 @@
             </div> <!-- end List Jobs -->
         @endforeach
     @else
-        <div class="my-4 mx-auto text-center border-t border-gray-200 pt-8">
-            <p class="font-semibold text-gray-600 text-sm">Nenhum registro encontrado, candidate-se em uma vaga agora
+        <div class="pt-8 mx-auto my-4 text-center border-t border-gray-200">
+            <p class="text-sm font-semibold text-gray-600">Nenhum registro encontrado, candidate-se em uma vaga agora
                 mesmo!</p>
         </div>
     @endif

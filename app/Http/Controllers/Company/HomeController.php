@@ -50,8 +50,8 @@ class HomeController extends Controller
         $interested = DB::table('user_jobs')
             ->join('jobs', 'user_jobs.job_id', '=', 'jobs.id')
             ->join('users', 'user_jobs.user_id', '=', 'users.id')
-            ->select('jobs.title', 'users.name', 'users.slug', 'users.profile','users.photo', 'user_jobs.*')
-            ->where('jobs.user_id', Auth::user()->id)
+            ->join('clients', 'clients.id', '=', 'jobs.client_id')
+            ->select('jobs.title', 'clients.fantasy','users.name', 'users.slug', 'users.profile','users.photo', 'user_jobs.*')
             ->orderBy('created_at', 'DESC')->paginate(15);
 
         return view('company.interested', ['interested' => $interested]);

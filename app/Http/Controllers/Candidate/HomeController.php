@@ -23,10 +23,10 @@ class HomeController extends Controller
         $category = intval($request->input('category', 'All'));
 
         $jobs = DB::table('jobs')
-            ->join('users', 'jobs.user_id', '=', 'users.id')
+            ->join('clients', 'jobs.client_id', '=', 'clients.id')
             ->join('categories', 'jobs.category_id', '=', 'categories.id')
             ->leftJoin('user_jobs', 'jobs.id', '=', 'user_jobs.job_id')
-            ->select('jobs.*', 'users.fantasy', 'users.photo', 'categories.title as categories')
+            ->select('jobs.*', 'clients.fantasy', 'clients.cover', 'categories.title as categories')
             ->where('user_jobs.user_id', '<>', auth()->id())
             ->orWhereNull('user_jobs.id')
             ->when($category && $category !== "All", function ($query) use ($category){

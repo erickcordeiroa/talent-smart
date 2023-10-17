@@ -18,8 +18,8 @@ class AppLayout extends Component
     {   
         $notifications = DB::table('notifications')
             ->join('jobs', 'notifications.job_id', '=', 'jobs.id')
-            ->join('users', 'jobs.user_id', '=', 'users.id')
-            ->select('notifications.*', 'users.fantasy')
+            ->join('clients', 'jobs.client_id', '=', 'clients.id')
+            ->select('notifications.*', 'clients.fantasy')
             ->where('notifications.user_id', Auth::user()->id)
             ->limit(5)
             ->orderBy('created_at', 'DESC')->get();

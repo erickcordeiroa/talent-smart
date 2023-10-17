@@ -3,7 +3,6 @@
 namespace App\Models\Company;
 
 use App\Models\Category;
-use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -49,8 +48,8 @@ class Job extends Model
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
-    public function users()
+    public function clients()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 }

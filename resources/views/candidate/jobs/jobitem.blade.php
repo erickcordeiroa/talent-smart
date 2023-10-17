@@ -1,6 +1,6 @@
 <x-app-layout>
     <a href="{{ (Request::query('view') != 'view')? route('app.dash') : route('app.jobs') }}"
-        class="hover:underline flex items-center justify-between w-32 font-bold text-sm mb-4">
+        class="flex items-center justify-between w-32 mb-4 text-sm font-bold hover:underline">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7">
             </path>
@@ -8,14 +8,14 @@
         <span class="block">
             {{ (Request::query('view') != 'view')? 'Todas as Vagas' : 'Minhas vagas' }}</span>
     </a>
-    <div class="job-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex">
+    <div class="flex transition duration-150 ease-in bg-white job-container hover:shadow-card rounded-xl">
         <div class="flex flex-1 px-2 py-6">
             <div class="w-full mx-4">
                 {{-- Title Job --}}
                 <h4 class="text-2xl font-semibold">{{ $job->title }}</h4>
 
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
                         <div>{{ \Carbon\Carbon::parse($job->created_at)->diffForHumans() }}</div>
                         <div>&bull;</div>
                         <div>{{ $job->categories->title }}</div>
@@ -23,18 +23,18 @@
                 </div>
 
                 {{-- Company Job --}}
-                <div class="mt-4 flex items-center">
+                <div class="flex items-center mt-4">
                     <div class="mr-4">
-                        <img src="{{ url('media/avatars/' . $job->users->photo) }}" alt="avatar"
+                        <img src="{{ url('media/avatars/' . $job->clients->cover) }}" alt="avatar"
                             class="w-12 h-12 rounded-full">
                     </div>
                     <div>
-                        <h6 class="font-semibold">{{ $job->users->fantasy }}</h6>
+                        <h6 class="font-semibold">{{ $job->clients->fantasy }}</h6>
                     </div>
                 </div>
 
                 {{-- Location and Salary --}}
-                <div class="mt-4 flex items-center">
+                <div class="flex items-center mt-4">
                     <div class="mr-12">
                         <span class="block font-bold text-md">Localização:</span>
                         <h6 class="text-sm text-orange-500">{{ $job->city }}</h6>
@@ -48,9 +48,9 @@
 
                 {{-- Benefits --}}
                 <div class="mt-4">
-                    <span class="block font-bold text-md mb-2">Benefícios:</span>
+                    <span class="block mb-2 font-bold text-md">Benefícios:</span>
 
-                    <div class="w-full flex flex-wrap justify-start items-center">
+                    <div class="flex flex-wrap items-center justify-start w-full">
 
                         <div
                             class="{{ $job->transport ? 'flex' : 'hidden' }} w-full md:w-1/4 md:justify-betstartween items-center my-2">
@@ -93,7 +93,7 @@
                 </div>
 
                 {{-- Description --}}
-                <div class="description-job mt-4">
+                <div class="mt-4 description-job">
                     <span class="block font-bold text-md">Descrição:</span>
                     <p class="text-gray-600">
                         {{ $job->description }}
@@ -102,12 +102,12 @@
 
                 {{-- Button Candidatar --}}
                 @if(Request::query('view') != 'view')
-                <div class="flex items-center mt-4 justify-center md:justify-end">
+                <div class="flex items-center justify-center mt-4 md:justify-end">
                     <form action="{{ route('app.link') }}" method="post">
                     @csrf
                     <input type="hidden" name="job" value="{{ $job->id }}">
                     <button type="submit"
-                        class="relative bg-green-600 text-white hover:bg-green-900 rounded-full transition duration-150 ease-in px-6 py-2">
+                        class="relative px-6 py-2 text-white transition duration-150 ease-in bg-green-600 rounded-full hover:bg-green-900">
                         Quero me candidatar a vaga
                     </button>
                     </form>
