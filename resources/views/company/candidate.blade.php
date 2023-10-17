@@ -67,6 +67,7 @@
             </ul>
 
             <ul class="hidden mb-10 md:mb-0 md:flex">
+                 @if($user->phone)
                 <li>
                     <a target="_blank" href="https://api.whatsapp.com/send?phone=55{{ $user->phone }}"
                         class="flex items-center justify-center px-10 py-3 font-bold text-center text-white bg-green-800 hover:bg-green-900 rounded-xl text-md">
@@ -77,18 +78,22 @@
                         <span>Conversar com o Candidato</span>
                     </a>
                 </li>
+                @endif
+
+                @if($user->curriculo)
                 <li class="ml-2">
-                    <a target="_blank" href="https://api.whatsapp.com/send?phone=55{{ $user->phone }}"
-                        class="flex items-center justify-center px-10 py-3 font-bold text-center text-white bg-indigo-600 hover:bg-indigo-900 rounded-xl text-md">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <a target="_blank" download href="{{ asset('media/curriculos/' . $user->curriculo) }}"
+                        class="flex items-center justify-center px-10 py-3 font-bold text-center text-white bg-indigo-600 hover-bg-indigo-900 rounded-xl text-md">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="1.5"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z">
                             </path>
                         </svg>
-                        <span>Download Curriculo</span>
+                        <span>Download Currículo</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </nav>
 
@@ -111,10 +116,10 @@
                         <h2 class="font-bold">{{ $item->company }}</h2>
                         {{-- Date --}}
                         @if ($item->currently == 1)
-                            <h3 class="text-gray-400">{{ date('d/M', strtotime($item->start)) }} -
+                            <h3 class="text-gray-400">{{ date('M/Y', strtotime($item->start)) }} -
                                 Atualmente</h3>
                         @else
-                            <h3 class="text-gray-400">{{ date('d/M', strtotime($item->start)) }} -
+                            <h3 class="text-gray-400">{{ date('M/Y', strtotime($item->start)) }} -
                                 {{ date('d/M', strtotime($item->end)) }}</h3>
                         @endif
 
@@ -153,8 +158,8 @@
                         {{-- Company name --}}
                         <h2 class="font-bold">{{ $item->company }}</h2>
                         {{-- Date --}}
-                        <h3 class="text-gray-400">{{ date('d/M', strtotime($item->start)) }} -
-                            {{ date('d/M', strtotime($item->end)) }}</h3>
+                        <h3 class="text-gray-400">{{ date('M/Y', strtotime($item->start)) }} -
+                            {{ date('M/Y', strtotime($item->end)) }}</h3>
                         {{-- Degree --}}
                         <h3 class="text-gray-400">{{ $item->degree }}</h3>
                         {{-- Description --}}

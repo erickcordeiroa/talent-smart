@@ -59,6 +59,17 @@ class UsersController extends Controller
             $user->photo = $imgName;
         }
 
+        //Verify Exists Image
+        if ($request->hasFile('curriculo')) {
+
+            $dest = public_path('/media/curriculos');
+            $pdfName = md5(time() . rand(0, 9999)) . '.pdf';
+
+            $pdfFile = $request->file('curriculo');
+            $pdfFile->move($dest, $pdfName);
+            $user->curriculo = $pdfName;
+        }
+
         $user->name = $data['name'];
 
         //Verify changed email

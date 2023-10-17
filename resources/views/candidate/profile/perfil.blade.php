@@ -1,7 +1,7 @@
 <x-app-layout>
     @if ($errors->any())
-        <div class="w-full mb-4 rounded-lg border border-red-500 bg-red-400 p-3 text-white">
-            <h5 class="text-white font-bold text-3xl mb-2">Atenção!</h5>
+        <div class="w-full p-3 mb-4 text-white bg-red-400 border border-red-500 rounded-lg">
+            <h5 class="mb-2 text-3xl font-bold text-white">Atenção!</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -11,97 +11,104 @@
     @endif
 
     @if (session('success'))
-        <div class="w-full mb-4 rounded-lg border border-green-500 bg-green-400 p-3 text-white">
-            <h5 class="text-white font-bold text-3xl mb-2">Sucesso!</h5>
+        <div class="w-full p-3 mb-4 text-white bg-green-400 border border-green-500 rounded-lg">
+            <h5 class="mb-2 text-3xl font-bold text-white">Sucesso!</h5>
             {{ session('success') }}
         </div>
     @endif
 
 
-    <div class="profile bg-white border-transparent rounded-md">
+    <div class="bg-white border-transparent rounded-md profile">
         <form action="{{ route('app.update.perfil') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="form flex flex-col px-8 py-4">
+            <div class="flex flex-col px-8 py-4 form">
+                {{-- Image Perfil --}}
+                <div class="mb-6">
+                    <label for="curriculo" class="block mb-1 font-semibold">Seu Currículo</label>
+                    <input type="file" id="curriculo" name="curriculo" class="w-full p-2 text-sm font-semibold"
+                       accept="application/pdf" />
+                </div>
+
 
                 {{-- Image Perfil --}}
                 <div class="mb-6">
-                    <label for="photo" class="font-semibold block mb-1">Foto Perfil</label>
-                    <input type="file" id="photo" name="photo" class="p-2 font-semibold text-sm w-full"
+                    <label for="photo" class="block mb-1 font-semibold">Foto Perfil</label>
+                    <input type="file" id="photo" name="photo" class="w-full p-2 text-sm font-semibold"
                         accept="image/*" />
                 </div>
 
                 {{-- Name --}}
                 <div class="mb-6">
-                    <label for="name" class="font-semibold block mb-1">Nome Completo</label>
-                    <input type="text" name="name" class="rounded-md bg-gray-100 border border-gray-200 w-full"
+                    <label for="name" class="block mb-1 font-semibold">Nome Completo</label>
+                    <input type="text" name="name" class="w-full bg-gray-100 border border-gray-200 rounded-md"
                         placeholder="Ex: João de Souza" value="{{ $user->name }}">
                 </div>
 
                 {{-- Email --}}
                 <div class="mb-6">
-                    <label for="email" class="font-semibold block mb-1">E-mail</label>
-                    <input type="text" name="email" class="w-full rounded-md bg-gray-100 border border-gray-200"
+                    <label for="email" class="block mb-1 font-semibold">E-mail</label>
+                    <input type="text" name="email" class="w-full bg-gray-100 border border-gray-200 rounded-md"
                         placeholder="joaodasilva@hotmail.com" value="{{ $user->email }}">
                 </div>
 
 
                 {{-- Address --}}
                 <div class="mb-6">
-                    <label for="address" class="font-semibold block mb-1">Endereco</label>
-                    <input type="text" name="address" class="rounded-md bg-gray-100 border border-gray-200 w-full"
+                    <label for="address" class="block mb-1 font-semibold">Endereco</label>
+                    <input type="text" name="address" class="w-full bg-gray-100 border border-gray-200 rounded-md"
                         placeholder="Rua José da Silva, 120 - Centro" value="{{ $user->address }}">
                 </div>
 
-                <div class="form-group flex flex-col md:flex-row mb-6">
+                <div class="flex flex-col mb-6 form-group md:flex-row">
                     {{-- City --}}
-                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
-                        <label for="city" class="font-semibold mb-1">Cidade</label>
-                        <input type="text" name="city" class="rounded-md bg-gray-100 border border-gray-200 w-full"
+                    <div class="flex flex-col w-full mb-6 md:w-1/2 md:pr-2 md:mb-0">
+                        <label for="city" class="mb-1 font-semibold">Cidade</label>
+                        <input type="text" name="city" class="w-full bg-gray-100 border border-gray-200 rounded-md"
                             placeholder="Registro" value="{{ $user->city }}">
                     </div>
                     {{-- State --}}
                     <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
-                        <label for="state" class="font-semibold mb-1">Estado</label>
-                        <input type="text" name="state" class="rounded-md bg-gray-100 border border-gray-200 w-full"
+                        <label for="state" class="mb-1 font-semibold">Estado</label>
+                        <input type="text" name="state" class="w-full bg-gray-100 border border-gray-200 rounded-md"
                             placeholder="São Paulo" value="{{ $user->state }}">
                     </div>
                 </div>
 
 
                 {{-- Password --}}
-                <div class="form-group flex flex-col md:flex-row mb-6">
-                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
-                        <label for="password" class="font-semibold mb-1">Senha</label>
-                        <input type="password" name="password" class="rounded-md bg-gray-100 border border-gray-200"
+                <div class="flex flex-col mb-6 form-group md:flex-row">
+                    <div class="flex flex-col w-full mb-6 md:w-1/2 md:pr-2 md:mb-0">
+                        <label for="password" class="mb-1 font-semibold">Senha</label>
+                        <input type="password" name="password" class="bg-gray-100 border border-gray-200 rounded-md"
                             placeholder="********">
                     </div>
                     <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
-                        <label for="password_confirmation" class="font-semibold mb-1">Confirmar Senha</label>
+                        <label for="password_confirmation" class="mb-1 font-semibold">Confirmar Senha</label>
                         <input type="password" name="password_confirmation"
-                            class="rounded-md bg-gray-100 border border-gray-200" placeholder="********">
+                            class="bg-gray-100 border border-gray-200 rounded-md" placeholder="********">
                     </div>
                 </div>
                 <div>
                     {{-- Date of Birthday --}}
-                    <div class="mb-6 flex flex-col md:flex-row">
-                        <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
-                            <label for="dob" class="font-semibold mb-1">Data de Aniversario</label>
-                            <input type="date" name="birthday" class="rounded-md bg-gray-100 border border-gray-200"
+                    <div class="flex flex-col mb-6 md:flex-row">
+                        <div class="flex flex-col w-full mb-6 md:w-1/2 md:pr-2 md:mb-0">
+                            <label for="dob" class="mb-1 font-semibold">Data de Aniversario</label>
+                            <input type="date" name="birthday" class="bg-gray-100 border border-gray-200 rounded-md"
                                 value="{{ $user->birthday }}">
                         </div>
                         {{-- CPF/CNPJ --}}
                         <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
-                            <label for="cpf" class="font-semibold mb-1">CPF</label>
-                            <input type="text" name="document" class="rounded-md bg-gray-100 border border-gray-200"
+                            <label for="cpf" class="mb-1 font-semibold">CPF</label>
+                            <input type="text" name="document" class="bg-gray-100 border border-gray-200 rounded-md"
                                 placeholder="XXX.XXX.XXX-XX" value="{{ $user->document }}">
                         </div>
                     </div>
                 </div>
-                <div class="mb-6 flex flex-col md:flex-row">
+                <div class="flex flex-col mb-6 md:flex-row">
                     {{-- License --}}
-                    <div class="flex flex-col w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
-                        <label for="license" class="font-semibold mb-1 block">Habilitação</label>
-                        <select name="license" class="rounded-md bg-gray-100 border border-gray-200 w-full">
+                    <div class="flex flex-col w-full mb-6 md:w-1/2 md:pr-2 md:mb-0">
+                        <label for="license" class="block mb-1 font-semibold">Habilitação</label>
+                        <select name="license" class="w-full bg-gray-100 border border-gray-200 rounded-md">
                             <option value="A" {{ $user->license == 'A' ? 'selected' : '' }}>A</option>
                             <option value="A/B" {{ $user->license == 'A/B' ? 'selected' : '' }}>A/B</option>
                             <option value="B" {{ $user->license == 'B' ? 'selected' : '' }}>B</option>
@@ -113,15 +120,15 @@
                     </div>
                     {{-- Phone --}}
                     <div class="flex flex-col w-full md:w-1/2 md:pr-2 md:mb-0">
-                        <label for="phone" class="font-semibold mb-1">Celular</label>
-                        <input type="text" name="phone" class="rounded-md bg-gray-100 border border-gray-200"
+                        <label for="phone" class="mb-1 font-semibold">Celular</label>
+                        <input type="text" name="phone" class="bg-gray-100 border border-gray-200 rounded-md"
                             placeholder="XX XXXXX-XXXX" value="{{ $user->phone }}" maxlength="11">
                     </div>
                 </div>
                 {{-- Status --}}
                 <div class="mb-6">
-                    <label for="status" class="font-semibold mb-1 block">Status</label>
-                    <select name="status" class="rounded-md bg-gray-100 border border-gray-200 w-full">
+                    <label for="status" class="block mb-1 font-semibold">Status</label>
+                    <select name="status" class="w-full bg-gray-100 border border-gray-200 rounded-md">
                         <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Quero receber proposta de
                             emprego</option>
                         <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Nao quero receber proposta de
@@ -129,20 +136,20 @@
                     </select>
                 </div>
                 <div class="mb-6">
-                    <label for="description" class="font-semibold mb-1 block">Descricao</label>
-                    <textarea name="description" rows="10" class="rounded-md bg-gray-100 border border-gray-200 w-full" style="resize:none;"
+                    <label for="description" class="block mb-1 font-semibold">Descricao</label>
+                    <textarea name="description" rows="10" class="w-full bg-gray-100 border border-gray-200 rounded-md" style="resize:none;"
                         placeholder="Digite uma breve descrição sua...">{{ $user->description }}</textarea>
                 </div>
 
 
                 <button type="submit"
-                    class="self-end w-40 flex justify-center items-center p-2 font-semibold bg-lime-700 hover:bg-lime-900 text-sm text-white rounded-md transition duration-150 ease-in">
+                    class="flex items-center self-end justify-center w-40 p-2 text-sm font-semibold text-white transition duration-150 ease-in rounded-md bg-lime-700 hover:bg-lime-900">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
                         </path>
                     </svg>
-                    <span class="ml-2 capitalize text-lg">Editar perfil</span>
+                    <span class="ml-2 text-lg capitalize">Editar perfil</span>
                 </button>
             </div>
         </form>
