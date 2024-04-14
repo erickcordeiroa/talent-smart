@@ -6,6 +6,7 @@ use App\Http\Controllers\Candidate\EducationsController;
 use App\Http\Controllers\Candidate\HomeController;
 use App\Http\Controllers\Candidate\UsersController;
 use App\Http\Controllers\Candidate\VolunteerExperiencesController;
+use App\Http\Controllers\Company\CategoriesController;
 use App\Http\Controllers\Company\ClientsController;
 use App\Http\Controllers\Company\HomeController as CompanyHomeController;
 use App\Http\Controllers\Company\JobsController;
@@ -17,7 +18,7 @@ Route::get('/', function () {
 });
 
 //Routes Candidade
-Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
+Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('app.dash');
 
     Route::get('/notification', [HomeController::class, 'viewNotify'])->name('app.view.notification');
@@ -58,7 +59,7 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
 
 
 //Routes Company
-Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
+Route::prefix('/company')->middleware(['auth', 'company'])->group(function () {
     Route::get('/', [CompanyHomeController::class, 'index'])->name('company.dash');
 
     //Infos Candidate
@@ -84,10 +85,18 @@ Route::prefix('/company')->middleware(['auth', 'company'])->group(function(){
     Route::put('/cliente/editar/{client}', [ClientsController::class, 'update'])->name('company.update.clients');
     Route::delete('/cliente/{id}', [ClientsController::class, 'destroy'])->name('company.destroy.clients');
 
+    //Categories
+    Route::get('/categorias', [CategoriesController::class, 'index'])->name('company.categories');
+    Route::get('/categoria/novo', [CategoriesController::class, 'create'])->name('company.create.categories');
+    Route::post('/categoria/novo', [CategoriesController::class, 'store'])->name('company.store.categories');
+    Route::get('/categoria/editar/{category}', [CategoriesController::class, 'edit'])->name('company.edit.categories');
+    Route::put('/categoria/editar/{category}', [CategoriesController::class, 'update'])->name('company.update.categories');
+    Route::delete('/categorias/{id}', [CategoriesController::class, 'destroy'])->name('company.destroy.categories');
+
 
     //Profile
     Route::get('/perfil', [CompanyUserController::class, 'index'])->name('company.profile');
     Route::post('/profile', [CompanyUserController::class, 'update'])->name('company.update.perfil');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

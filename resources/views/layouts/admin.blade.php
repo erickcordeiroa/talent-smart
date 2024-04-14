@@ -84,6 +84,25 @@
                                 </svg>
                             </a>
                         </li>
+                        <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
+                            <a class="flex flex-row items-center justify-between" href="{{ route('company.categories') }}">
+                                <span>Cadastrar Categorias</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
+                            <a class="flex flex-row items-center justify-between" href="{{ route('company.clients') }}">
+                                <span>Cadastrar Benefícios</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>
