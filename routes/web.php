@@ -5,6 +5,7 @@ use App\Http\Controllers\Candidate\ExperiencesController;
 use App\Http\Controllers\Candidate\EducationsController;
 use App\Http\Controllers\Candidate\HomeController;
 use App\Http\Controllers\Candidate\UsersController;
+use App\Http\Controllers\Candidate\VolunteerExperiencesController;
 use App\Http\Controllers\Company\ClientsController;
 use App\Http\Controllers\Company\HomeController as CompanyHomeController;
 use App\Http\Controllers\Company\JobsController;
@@ -32,6 +33,13 @@ Route::prefix('/app')->middleware(['auth', 'candidate'])->group(function(){
     Route::get('/experiencias/editar/{id}', [ExperiencesController::class, 'edit'])->name('app.edit.experiences');
     Route::put('/experiencias/editar/{id}', [ExperiencesController::class, 'update'])->name('app.update.experiences');
     Route::delete('/experiencias/{id}', [ExperiencesController::class, 'destroy'])->name('app.destroy.experiences');
+
+    Route::get('/voluntarios', [VolunteerExperiencesController::class, 'index'])->name('app.volunteers');
+    Route::get('/voluntario/nova', [VolunteerExperiencesController::class, 'create'])->name('app.create.volunteers');
+    Route::post('/voluntario/nova', [VolunteerExperiencesController::class, 'store'])->name('app.store.volunteers');
+    Route::get('/voluntario/editar/{id}', [VolunteerExperiencesController::class, 'edit'])->name('app.edit.volunteers');
+    Route::put('/voluntario/editar/{id}', [VolunteerExperiencesController::class, 'update'])->name('app.update.volunteers');
+    Route::delete('/voluntario/{id}', [VolunteerExperiencesController::class, 'destroy'])->name('app.destroy.volunteers');
 
     Route::get('/cursos', [EducationsController::class, 'index'])->name('app.educations');
     Route::get('/cursos/novo', [EducationsController::class, 'create'])->name('app.create.educations');

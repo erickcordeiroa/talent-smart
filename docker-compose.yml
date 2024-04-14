@@ -1,16 +1,9 @@
 version: '3.7'
 
-# Networks
-networks:
-  # Internal network
-  internal:
-    driver: bridge
-
 # Volumes
 volumes:
   # MySQL volume
   mysql-dev_data:
-    driver: local
 
 services:
 
@@ -18,8 +11,6 @@ services:
   apache-dev:
     image: webdevops/php-apache-dev:8.1
     container_name: apache-dev
-    networks:
-      - internal
     working_dir: /var/www/app
     volumes:
       - .:/var/www/app
@@ -47,8 +38,6 @@ services:
   mysql-dev:
     image: mysql:5.7
     container_name: mysql-dev
-    networks:
-      - internal
     working_dir: /var/www/app
     volumes:
       - mysql-dev_data:/var/lib/mysql
@@ -59,4 +48,4 @@ services:
       - MYSQL_USER=talent
       - MYSQL_PASSWORD=talent
     ports:
-      - 3000:3306
+      - 3306:3306
