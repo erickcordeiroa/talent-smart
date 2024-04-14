@@ -95,7 +95,7 @@
                         </li>
 
                         <li class="p-3 border-b border-gray-100 hover:underline rounded-xl">
-                            <a class="flex flex-row items-center justify-between" href="{{ route('company.clients') }}">
+                            <a class="flex flex-row items-center justify-between" href="{{ route('company.benefits') }}">
                                 <span>Cadastrar Benefícios</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

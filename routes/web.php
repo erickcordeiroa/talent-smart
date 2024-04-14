@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Company\BenefitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Candidate\ExperiencesController;
 use App\Http\Controllers\Candidate\EducationsController;
@@ -92,6 +93,14 @@ Route::prefix('/company')->middleware(['auth', 'company'])->group(function () {
     Route::get('/categoria/editar/{category}', [CategoriesController::class, 'edit'])->name('company.edit.categories');
     Route::put('/categoria/editar/{category}', [CategoriesController::class, 'update'])->name('company.update.categories');
     Route::delete('/categorias/{id}', [CategoriesController::class, 'destroy'])->name('company.destroy.categories');
+
+    //Benefits
+    Route::get('/beneficios', [BenefitController::class, 'index'])->name('company.benefits');
+    Route::get('/beneficio/novo', [BenefitController::class, 'create'])->name('company.create.benefits');
+    Route::post('/beneficio/novo', [BenefitController::class, 'store'])->name('company.store.benefits');
+    Route::get('/beneficio/editar/{benefit}', [BenefitController::class, 'edit'])->name('company.edit.benefits');
+    Route::put('/beneficio/editar/{benefit}', [BenefitController::class, 'update'])->name('company.update.benefits');
+    Route::delete('/beneficio/{id}', [BenefitController::class, 'destroy'])->name('company.destroy.benefits');
 
 
     //Profile
