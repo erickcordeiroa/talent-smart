@@ -81,41 +81,22 @@
 
                 <span class="block w-full mb-2 font-bold">Benefícios</span>
                 <div class="flex flex-col mb-6 md:flex-row md:justify-between md:items-center">
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="transport"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="transport" {{ $job->transport ? 'checked' : '' }}>
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="transport">
-                            Vale Transporte
-                        </label>
-                    </div>
-
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="food"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="food" {{ $job->food ? 'checked' : '' }}>
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="food">
-                            Vale Alimentação
-                        </label>
-                    </div>
-
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="snack"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="snack" {{ $job->snack ? 'checked' : '' }}>
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="snack">
-                            Vale Refeição
-                        </label>
-                    </div>
-
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="health"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="health" {{ $job->health ? 'checked' : '' }}>
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="health">
-                            Convênio Médico
-                        </label>
-                    </div>
+                    @if ($benefits)
+                        @foreach ($benefits as $item)
+                            @foreach ($job_benefits as $iBenefit)
+                                <div class="flex items-center w-full md:w-1/3 form-check">
+                                    <input name="benefits[]" value="{{ $item->id }}"
+                                        checked="{{$item->id === $iBenefit->id ? 'checked' : '' }}"
+                                        class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
+                                        type="checkbox" id="{{ $item->uri }}">
+                                    <label class="inline-block pt-2 text-gray-800 form-check-label"
+                                        for="{{ $item->uri }}">
+                                        {{ $item->title }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        @endforeach
+                    @endif
                 </div>
 
                 <div class="mb-4">

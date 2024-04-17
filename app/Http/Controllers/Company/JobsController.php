@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Company\Benefit;
 use App\Models\Company\Client;
 use App\Models\Company\Job;
+use App\Models\JobBenefit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -34,6 +36,7 @@ class JobsController extends Controller
         return view('company.jobs.create', [
             'categories' => Category::all(),
             'clients' => Client::all(),
+            'benefits' => Benefit::all(),
         ]);
     }
 
@@ -45,10 +48,8 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = $request->only([
-            'title', 'client_id', 'category_id', 'city', 'salary', 'match', 'transport',
-            'snack', 'food', 'health', 'description', 'tags'
+            'title', 'client_id', 'category_id', 'city', 'salary', 'match', 'benefits', 'description', 'tags'
         ]);
 
         $validator = Validator::make($data, [
@@ -58,7 +59,6 @@ class JobsController extends Controller
             'city' => ['required', 'string'],
             'salary' => ['required', 'between:0,99.99'],
             'description' => ['string', 'max:500'],
-            'tags' => ['string', 'max:255']
         ]);
 
         if ($validator->fails()) {
@@ -73,13 +73,17 @@ class JobsController extends Controller
         $job->city = $data['city'];
         $job->salary = $data['salary'];
         $job->match = (!empty($data['match'])) ? 1 : 0;
-        $job->transport = (!empty($data['transport'])) ? 1 : 0;
-        $job->snack = (!empty($data['snack'])) ? 1 : 0;
-        $job->food = (!empty($data['food'])) ? 1 : 0;
-        $job->health = (!empty($data['health'])) ? 1 : 0;
         $job->description = $data['description'];
-        $job->tags = $data['tags'];
         $job->save();
+
+        if ($data['benefits']) {
+            foreach ($data['benefits'] as $item) {
+                $benefits = new JobBenefit();
+                $benefits->job_id = $job->id;
+                $benefits->benefit_id = $item;
+                $benefits->save();
+            }
+        }
 
         return redirect()->route('company.jobs')
             ->with('success', 'Parabéns sua vaga foi cadastrada!');
@@ -108,6 +112,8 @@ class JobsController extends Controller
             "job" => $job,
             "categories" => Category::all(),
             'clients' => Client::all(),
+            'benefits' => Benefit::all(),
+            'job_benefits' => JobBenefit::where('job_id', $job->id)->get(),
         ]);
     }
 
@@ -147,13 +153,26 @@ class JobsController extends Controller
         $job->city = $data['city'];
         $job->salary = $data['salary'];
         $job->match = (!empty($data['match'])) ? 1 : 0;
-        $job->transport = (!empty($data['transport'])) ? 1 : 0;
-        $job->snack = (!empty($data['snack'])) ? 1 : 0;
-        $job->food = (!empty($data['food'])) ? 1 : 0;
-        $job->health = (!empty($data['health'])) ? 1 : 0;
         $job->description = $data['description'];
-        $job->tags = $data['tags'];
         $job->save();
+
+        if ($data['benefits']) {
+            $hasBenefits = JobBenefit::where('job_id', $job->id)->get();
+
+            if($hasBenefits) {
+                foreach ($hasBenefits as $item) {
+                    $item->delete();
+                }
+            }
+
+            foreach ($data['benefits'] as $item) {
+                $benefits = new JobBenefit();
+                $benefits->job_id = $job->id;
+                $benefits->benefit_id = $item;
+                $benefits->save();
+            }
+        }
+
 
         return redirect()->route('company.jobs')
             ->with('success', 'Parabéns sua vaga foi cadastrada!');
@@ -168,13 +187,20 @@ class JobsController extends Controller
     public function destroy($id)
     {
         $job = Job::find($id);
-        if(!$job){
+        if (!$job) {
             return redirect()->route('company.jobs')
                 ->with('errors', 'A vaga que deseja excluir não existe!');
         }
 
+        $benefits = JobBenefit::where('job_id', $id)->get();
+        if($benefits) {
+            foreach($benefits as $item) {
+                $item->delete();
+            }
+        }
+
         $job->delete();
         return redirect()->route('company.jobs')
-                ->with('success', 'A vaga foi excluida com sucesso!');
+            ->with('success', 'A vaga foi excluida com sucesso!');
     }
 }

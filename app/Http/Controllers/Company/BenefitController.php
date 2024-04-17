@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company\Benefit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class BenefitController extends Controller
 {
@@ -46,7 +47,19 @@ class BenefitController extends Controller
                 ->withErrors($validator)->withInput();
         }
 
-        Benefit::create($data);
+        $newBenefit = new Benefit();
+        $newBenefit->title = $data['title'];
+        $newBenefit->uri = Str::slug($data['title']);
+
+        $hasBenefit = Benefit::where('uri', $newBenefit->uri)->get();
+
+        if ($hasBenefit->count() > 0) {
+            return redirect()->route('company.create.benefits')
+                ->withErrors(['O Benefício que deseja criar já existe!']);
+        }
+
+
+        $newBenefit->save();
 
         return redirect()->route('company.benefits')
             ->with('success', 'Parabéns seu benefício foi criado!');
@@ -81,13 +94,23 @@ class BenefitController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('company.create.benefits')
+            return redirect()->route('company.edit.benefits')
                 ->withErrors($validator)->withInput();
         }
 
         $newBenefit = Benefit::find($benefit->id);
         $newBenefit->title = $data['title'];
+        $newBenefit->uri = Str::slug($data['title']);
+
+        $hasBenefit = Benefit::where('uri', $newBenefit->uri)->get();
+
+        if ($hasBenefit->count() > 0) {
+            return redirect()->route('company.edit.benefits', ['benefit' => $benefit])
+                ->withErrors(['O Benefício que deseja criar já existe!']);
+        }
+
         $newBenefit->save();
+
 
         return redirect()->route('company.benefits')
             ->with('success', 'Parabéns seu benefício foi atualizado!');
@@ -102,13 +125,13 @@ class BenefitController extends Controller
     public function destroy($id)
     {
         $category = Benefit::find($id);
-        if(!$category){
+        if (!$category) {
             return redirect()->route('company.benefits')
-                ->with('errors', 'O Benefício que deseja excluir não existe!');
+                ->withErrors(['O Benefício que deseja excluir não existe!']);
         }
 
         $category->delete();
         return redirect()->route('company.benefits')
-                ->with('success', 'O Benefício foi excluida com sucesso!');
+            ->with('success', 'O Benefício foi excluida com sucesso!');
     }
 }

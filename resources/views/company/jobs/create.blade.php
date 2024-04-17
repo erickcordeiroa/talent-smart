@@ -78,55 +78,25 @@
 
                 <span class="block w-full mb-2 font-bold">Benefícios</span>
                 <div class="flex flex-col mb-6 md:flex-row md:justify-between md:items-center">
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="transport"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="transport">
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="transport">
-                            Vale Transporte
-                        </label>
-                    </div>
-
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="food"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="food">
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="food">
-                            Vale Alimentação
-                        </label>
-                    </div>
-
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="snack"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="snack">
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="snack">
-                            Vale Refeição
-                        </label>
-                    </div>
-
-                    <div class="flex items-center w-full md:w-1/3 form-check">
-                        <input name="health"
-                            class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                            type="checkbox" id="health">
-                        <label class="inline-block pt-2 text-gray-800 form-check-label" for="health">
-                            Convênio Médico
-                        </label>
-                    </div>
+                    @if($benefits)
+                        @foreach ($benefits as $item)
+                        <div class="flex items-center w-full md:w-1/3 form-check">
+                            <input name="benefits[]"
+                                value="{{$item->id}}"
+                                class="float-left w-6 h-6 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
+                                type="checkbox" id="{{$item->uri}}">
+                            <label class="inline-block pt-2 text-gray-800 form-check-label" for="{{$item->uri}}">
+                                {{$item->title}}
+                            </label>
+                        </div>
+                        @endforeach
+                    @endif
                 </div>
 
                 <div class="mb-4">
                     <label for="description" class="block mb-1 font-semibold">Descricao</label>
                     <textarea name="description" rows="6" class="w-full bg-gray-100 border border-gray-200 rounded-md"
                         style="resize:none;" placeholder="Digite uma breve descrição do que você aprenderá/aprendeu...">{{ old('description') }}</textarea>
-                </div>
-
-                {{-- Tags --}}
-                <div class="mb-6">
-                    <label for="tags" class="mb-1 font-semibold">Tags - <small class="italic">Separado por ";"
-                            (ponto e virgula) sem espaço</small></label>
-                    <input type="text" placeholder="Atendimento;Banco;Empresa" name="tags"
-                        class="w-full bg-gray-100 border border-gray-200 rounded-md" value="{{ old('city') }}">
                 </div>
 
 
