@@ -1,0 +1,1 @@
+web: vendor/bin/heroku-php-apachw2 public/
